@@ -39,4 +39,6 @@
 Strassen_alg/CMakeCache.txt
 Strassen_alg/CMakeFiles/
 Strassen_alg/cmake_install.cmake
+Strassen_alg/CMakeDoxyfile.in
+Strassen_alg/CMakeDoxygenDefaults.cmake
 Strassen_alg/doc/

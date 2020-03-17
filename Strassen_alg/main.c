@@ -20,12 +20,18 @@
  *     ./strassen_test.x
  *
  * @subsection sec_builddoc Build the documentation
- * If you use the provided `Makefile`, you can build the documentation by running
+ * You can build the documentation by running
  *
  *     make doc
  *
  * The documentation is built into the folder `$BLD/doc/`, where `$BLD` is
  * your build folder.
+ */
+
+
+/**
+ * @file
+ * Documentation for this file.
  */
  
 #include <stdio.h>

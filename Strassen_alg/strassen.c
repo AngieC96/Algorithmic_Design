@@ -1,4 +1,9 @@
-#include "matrix.h"
+/**
+ * @file
+ * Documentation for this file.
+ */
+ 
+ #include "matrix.h"
 
 /**
  * @brief Subtracts two matrices.
@@ -63,7 +68,7 @@ void sum_matrix_blocks(float **C, float const *const *const A,
 }
 
 /**
- * @brief Naive algorithm for matrix multiplication
+ * @brief Naive algorithm for matrix multiplication.
  * @param C The matrix where to put the result.
  * @param A The first matrix of the multiplication.
  * @param B The second matrix of the multiplication.
@@ -99,7 +104,7 @@ void naive_aux(float **C, float const *const *const A,
 }
 
 /**
- * @brief Strassen's algorithm for matrix multiplication
+ * @brief Strassen's algorithm for matrix multiplication.
  * @param C The matrix where to put the result.
  * @param A The first matrix of the multiplication.
  * @param B The second matrix of the multiplication.
@@ -321,15 +326,9 @@ void strassen_aux(float **C, float const *const *const A,
  * @param C The matrix where to put the result.
  * @param A The first matrix of the multiplication.
  * @param B The second matrix of the multiplication.
- * @param C_f_row The starting point on the rows of the sub-matrix of C.
- * @param C_f_col The starting point on the columns of the sub-matrix of C.
- * @param A_f_row The starting point on the rows of the sub-matrix of A.
- * @param A_f_col The starting point on the columns of the sub-matrix of A.
- * @param B_f_row The starting point on the rows of the sub-matrix of B.
- * @param B_f_col The starting point on the columns of the sub-matrix of B.
  * @param n The dimension of the matrices.
  * 
- * This functions is exclusively meant to provide an easy to use API
+ * This functions is exclusively meant to provide an easy to use API.
  */
 void strassen_matrix_multiplication(float **C, float const *const *const A,
                                     float const *const *const B, size_t n) 

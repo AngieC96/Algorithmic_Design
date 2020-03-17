@@ -1,5 +1,20 @@
+/**
+ * @file
+ * Documentation for this file.
+ */
+ 
 #include <time.h>
 
+/**
+ * @brief Takes the time of a function.
+ * @param f The function to be tested.
+ * @param C The matrix that stores the result.
+ * @param A The first matrix.
+ * @param B The second matrix.
+ * @param n The dimension of the matrices.
+ * 
+ * This function takes the execution time of the function @ref f.
+ */
 double test(void (*f)(float **,
 	                  float const *const *const,
 	                  float const *const *const,
