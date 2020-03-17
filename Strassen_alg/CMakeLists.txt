@@ -7,5 +7,5 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O4")
 
-add_executable (strassen_test main.c matrix.c strassen.c test.c)
+add_executable (strassen_test.x main.c matrix.c strassen.c test.c)
 
