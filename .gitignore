@@ -36,9 +36,7 @@
 
 
 ## User-defined rules
-
-CMakeCache.txt
-CMakeFiles/
-Makefile
-cmake_install.cmake
-strassen_test
+Strassen_alg/CMakeCache.txt
+Strassen_alg/CMakeFiles/
+Strassen_alg/cmake_install.cmake
+Strassen_alg/doc/

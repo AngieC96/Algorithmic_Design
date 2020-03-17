@@ -1,11 +1,22 @@
 #include "matrix.h"
 
-/*
- * this function performs the element-wise
- * subtraction of B from A and put the resulting
- * sub-matrix in C. The parameters *_f_row and *_f_col
- * represents the first row and the first column,
- * respectively, of the sub-matrix we want to deal with.
+/**
+ * @brief Subtracts two matrices.
+ * @param C The matrix where to put the result.
+ * @param A The first matrix of the sbutaction.
+ * @param B The second matrix of the subtraction.
+ * @param C_f_row The starting point on the rows of the sub-matrix of C.
+ * @param C_f_col The starting point on the columns of the sub-matrix of C.
+ * @param A_f_row The starting point on the rows of the sub-matrix of A.
+ * @param A_f_col The starting point on the columns of the sub-matrix of A.
+ * @param B_f_row The starting point on the rows of the sub-matrix of B.
+ * @param B_f_col The starting point on the columns of the sub-matrix of B.
+ * @param n The dimension of the matrices.
+ * 
+ * This function performs the element-wise subtraction of B from A and puts the
+ * resulting sub-matrix in C.
+ * The parameters *_f_row and *_f_col represents the first row and the first
+ * column, respectively, of the sub-matrix we want to deal with.
  */
 void sub_matrix_blocks(float **C, float const *const *const A,
                        float const *const *const B,
@@ -20,6 +31,24 @@ void sub_matrix_blocks(float **C, float const *const *const A,
     }
 }
 
+/**
+ * @brief Sums two matrices.
+ * @param C The matrix where to put the result.
+ * @param A The first matrix of the summation.
+ * @param B The second matrix of the summation.
+ * @param C_f_row The starting point on the rows of the sub-matrix of C.
+ * @param C_f_col The starting point on the columns of the sub-matrix of C.
+ * @param A_f_row The starting point on the rows of the sub-matrix of A.
+ * @param A_f_col The starting point on the columns of the sub-matrix of A.
+ * @param B_f_row The starting point on the rows of the sub-matrix of B.
+ * @param B_f_col The starting point on the columns of the sub-matrix of B.
+ * @param n The dimension of the matrices.
+ * 
+ * This function performs the element-wise sum ofA and B and puts the
+ * resulting sub-matrix in C.
+ * The parameters *_f_row and *_f_col represents the first row and the first
+ * column, respectively, of the sub-matrix we want to deal with.
+ */
 void sum_matrix_blocks(float **C, float const *const *const A,
                        float const *const *const B,
                        const size_t C_f_row, const size_t C_f_col,
@@ -33,6 +62,24 @@ void sum_matrix_blocks(float **C, float const *const *const A,
     }
 }
 
+/**
+ * @brief Naive algorithm for matrix multiplication
+ * @param C The matrix where to put the result.
+ * @param A The first matrix of the multiplication.
+ * @param B The second matrix of the multiplication.
+ * @param C_f_row The starting point on the rows of the sub-matrix of C.
+ * @param C_f_col The starting point on the columns of the sub-matrix of C.
+ * @param A_f_row The starting point on the rows of the sub-matrix of A.
+ * @param A_f_col The starting point on the columns of the sub-matrix of A.
+ * @param B_f_row The starting point on the rows of the sub-matrix of B.
+ * @param B_f_col The starting point on the columns of the sub-matrix of B.
+ * @param n The dimension of the matrices.
+ * 
+ * This function implements the naive algorithm for matrix multiplication between
+ * sub-matrixes. The result is placed in the sub-matrix C.
+ * The parameters *_f_row and *_f_col represents the first row and the first
+ * column, respectively, of the sub-matrix we want to deal with.
+ */
 void naive_aux(float **C, float const *const *const A,
                float const *const *const B,
                const size_t C_f_row, const size_t C_f_col,
@@ -51,6 +98,24 @@ void naive_aux(float **C, float const *const *const A,
     }
 }
 
+/**
+ * @brief Strassen's algorithm for matrix multiplication
+ * @param C The matrix where to put the result.
+ * @param A The first matrix of the multiplication.
+ * @param B The second matrix of the multiplication.
+ * @param C_f_row The starting point on the rows of the sub-matrix of C.
+ * @param C_f_col The starting point on the columns of the sub-matrix of C.
+ * @param A_f_row The starting point on the rows of the sub-matrix of A.
+ * @param A_f_col The starting point on the columns of the sub-matrix of A.
+ * @param B_f_row The starting point on the rows of the sub-matrix of B.
+ * @param B_f_col The starting point on the columns of the sub-matrix of B.
+ * @param n The dimension of the matrices.
+ * 
+ * This function implements the Strassen's algorithm for matrix multiplication
+ * between sub-matrixes. The result is placed in the sub-matrix C.
+ * The parameters *_f_row and *_f_col represents the first row and the first
+ * column, respectively, of the sub-matrix we want to deal with.
+ */
 void strassen_aux(float **C, float const *const *const A,
                   float const *const *const B,
                   const size_t C_f_row, const size_t C_f_col,
@@ -251,6 +316,21 @@ void strassen_aux(float **C, float const *const *const A,
 
 }
 
+/**
+ * @brief Wrapper function for the function @ref strassen_aux.
+ * @param C The matrix where to put the result.
+ * @param A The first matrix of the multiplication.
+ * @param B The second matrix of the multiplication.
+ * @param C_f_row The starting point on the rows of the sub-matrix of C.
+ * @param C_f_col The starting point on the columns of the sub-matrix of C.
+ * @param A_f_row The starting point on the rows of the sub-matrix of A.
+ * @param A_f_col The starting point on the columns of the sub-matrix of A.
+ * @param B_f_row The starting point on the rows of the sub-matrix of B.
+ * @param B_f_col The starting point on the columns of the sub-matrix of B.
+ * @param n The dimension of the matrices.
+ * 
+ * This functions is exclusively meant to provide an easy to use API
+ */
 void strassen_matrix_multiplication(float **C, float const *const *const A,
                                     float const *const *const B, size_t n) 
 {
