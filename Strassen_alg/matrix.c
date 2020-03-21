@@ -25,7 +25,7 @@ void naive_matrix_multiplication(float **C, float const *const *const A,
   // IMPLEMENT THE NAIVE ALGORITHM HERE
   for(size_t y = 0; y < n; ++y){
     for(size_t x = 0; x < n; ++x) {
-      float value = 0;  // We don't need to derefrenece 
+      float value = 0.0;  // We don't need to derefrenece
       for(size_t z = 0;z < n; ++z){
         value += A[y][z] * B[z][x];
       }

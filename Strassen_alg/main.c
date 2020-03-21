@@ -41,7 +41,7 @@
 
 
 int main(int argc, char *argv[]) {
-  size_t n = 1 << 12;
+  size_t n = 1 << 12;  // This is 2^12: the left shift operator (<<) converts 1 to binary 0001, adds 12 zeros getting 0001000000000000. Converting this to integer one gets 4096, which is actually 2^12
 
   float **A = allocate_random_matrix(n, n);
   float **B = allocate_random_matrix(n, n);
