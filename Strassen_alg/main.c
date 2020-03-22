@@ -47,9 +47,10 @@ int main(int argc, char *argv[]) {
   float **B = allocate_random_matrix(n, n);
   float **C0 = allocate_matrix(n, n);
   float **C1 = allocate_matrix(n, n);
+  float **C2 = allocate_matrix(n, n);
 
 
-  printf("n\tNaive Alg.\tStrassen's Alg.\tSame result\n");
+  printf("n\tNaive Alg.\tStrassen's Alg.\tStr. Alg. best\tSame result\n");
   for (size_t j = 1; j <= n; j *= 2) {
 
     printf("%ld\t", j);
@@ -59,15 +60,20 @@ int main(int argc, char *argv[]) {
     fflush(stdout);
     printf("%lf\t", test(strassen_matrix_multiplication, C1, A, B, j));
     fflush(stdout);
+    printf("%lf\t", test(strassen_matrix_multiplication_best, C2, A, B, j));
+    fflush(stdout);
 
-    printf("%d\n", same_matrix((float const *const *const)C0,
+    printf("%d ", same_matrix((float const *const *const)C0,
                                  (float const *const *const)C1, j, j));
+    printf("%d\n", same_matrix((float const *const *const)C0,
+                                 (float const *const *const)C2, j, j));
   }
 
   deallocate_matrix(A, n);
   deallocate_matrix(B, n);
   deallocate_matrix(C0, n);
   deallocate_matrix(C1, n);
+  deallocate_matrix(C2, n);
 
   return 0;
 }
