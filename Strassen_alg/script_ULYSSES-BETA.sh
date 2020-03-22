@@ -30,7 +30,7 @@
 ## Queue, Walltime and Output
 #
 #[non mi serve] #SBATCH --array=001-010:001%6
-#SBATCH -p regular1                  # Partition (queue) to be used
+#SBATCH -p regular2                  # Partition (queue) to be used
 #SBATCH --time=12:00:00              # Time limit hrs:min:sec
 #SBATCH --output=%x.o%j              # Standard output log in TORQUE-style -- WARNING: %x requires a new enough SLURM. Use %j for regular jobs and %A-%a for array jobs
 #SBATCH --error=%x.e%j               # Standard error  log in TORQUE-style -- WARNING: %x requires a new enough SLURM. Use %j for regular jobs and %A-%a for array jobs
@@ -40,6 +40,7 @@
 #
 # ==== Modules part (load things) =====
 #
+module load gnu8/8.3.0
 
 export PATH=:/home/acarraro/.missingthings/usr/bin/:$PATH
 
@@ -53,7 +54,8 @@ cd $SLURM_SUBMIT_DIR
 
 # ==== JOB COMMANDS =====
 
-
+make clean
+make EXTRA_CXXFLAGS=-lrt
 ./strassen_test.x > ./output.txt
 
 

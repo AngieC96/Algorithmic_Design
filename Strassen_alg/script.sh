@@ -29,7 +29,7 @@
 #
 # ==== Modules part (load things) =====
 #
-
+module load gcc/4.8.2
 #
 # ==== End of Modules part (load things) =====
 #
@@ -71,7 +71,9 @@ cd $PBS_O_WORKDIR
 # ==== JOB COMMANDS =====
 
 
-./strassen_text.x > ./output.txt
+make clean
+make EXTRA_CFLAGS=-lrt
+./strassen_test.x > ./output.txt
 
 
 # ==== END OF JOB COMMANDS =====

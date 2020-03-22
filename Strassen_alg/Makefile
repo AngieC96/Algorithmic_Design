@@ -1,6 +1,6 @@
 EXE  = strassen_test.x
 CC  = gcc
-CFLAGS = -g -O4 -Wall -Wextra -I ./ $(EXTRA_CFLAGS)
+CFLAGS = -std=c11 -g -O4 -Wall -Wextra -I ./ $(EXTRA_CFLAGS)
 SRC  = main.c test.c matrix.c strassen.c
 OBJ  = $(SRC:.c=.o)
 INC  = ./
@@ -20,7 +20,7 @@ all: $(EXE)
 .PHONY: all
 
 $(EXE): $(OBJ)
-	$(CC) $^ -o $(EXE)
+	$(CC) $^ -o $(EXE) $(EXTRA_CFLAGS)
 
 %.o : %.c
 	$(CC) -c $< -o $@ $(CFLAGS)
