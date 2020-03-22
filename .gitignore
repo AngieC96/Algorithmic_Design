@@ -42,3 +42,13 @@ Strassen_alg/cmake_install.cmake
 Strassen_alg/CMakeDoxyfile.in
 Strassen_alg/CMakeDoxygenDefaults.cmake
 Strassen_alg/doc/
+
+Binary_heaps/CMakeCache.txt
+Binary_heaps/CMakeFiles/*
+Binary_heaps/cmake_install.cmake
+Binary_heaps/Makefile
+Binary_heaps/libbinheap.so
+Binary_heaps/libcommon.a
+Binary_heaps/test_*
+Binary_heaps/.vscode/*
+Binary_heaps/build/*

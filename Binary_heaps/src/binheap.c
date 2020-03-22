@@ -7,10 +7,12 @@
 /* A node is valid whenever the number of elements in the heap is greater than the node itself*/
 #define VALID_NODE(H, node) ((H)->num_of_elem>(node))
 
-/* Returns the address of the !!!!!!!1value!!!!!!!!!!!!1 stored in the node `node` */
+/* Returns the address of a pointer to the the value stored in the node `node` */
+/* Returns a pointer to that node inside the data structure */
 #define ADDR(H, node) ((H)->A+(node)*(H)->key_size)
-/* Returns the idex of the address given */
+/* Returns the index of the node's address given */
 #define INDEX_OF(H, addr) (((addr)-((H)->A))/(H)->key_size)
+
 
 int is_heap_empty(const binheap_type *H)
 {
