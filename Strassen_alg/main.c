@@ -50,10 +50,10 @@ int main(int argc, char *argv[]) {
   float **C2 = allocate_matrix(n, n);
 
 
-  printf("n\tNaive Alg.\tStrassen's Alg.\tStr. Alg. best\tSame result\n");
+  printf("    n\tNaive Alg.\tStrassen's Alg.\tStr. Alg. best\tSame result\n");
   for (size_t j = 1; j <= n; j *= 2) {
 
-    printf("%ld\t", j);
+    printf("%5ld\t", j);
     fflush(stdout);
  
     printf("%lf\t", test(naive_matrix_multiplication, C0, A, B, j));

@@ -56,7 +56,7 @@ cd $SLURM_SUBMIT_DIR
 
 make clean
 make EXTRA_CXXFLAGS=-lrt
-./strassen_test.x > ./output.txt
+./strassen_test.x > ./output_beta.txt
 
 
 # ==== END OF JOB COMMANDS =====
