@@ -20,7 +20,7 @@ typedef struct {
     void *A; // this is the array used to store heap nodes
     unsigned int num_of_elem; // this is the number of nodes in the heap
     unsigned int max_size; // this is the maximum number of nodes, i.e. size of A
-    size_t key_size: // this is the size of the key tipe (the keys are the values stored in the heap)
+    size_t key_size; // this is the size of the key tipe (the keys are the values stored in the heap)
     total_order_type leq; // this is the heap total order
     void *max_order_value; // this is the maximum value stored in the heap
 } binheap_type;
