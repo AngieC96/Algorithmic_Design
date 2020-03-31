@@ -104,4 +104,6 @@
 
    
 
-   The graph shows that ...
+   In the graph we can see that only in the last two pints the time is significantly different from 0. Unfortunately, we have too few significant points to establish with certainty that the complexity of the naive algorithm is $\Theta(n^3) = \Theta(n^{\log_2 8})$ and the one of the Strassen's algorithm is $\Theta(n^{\log_2 7})$, even though the graph is growing very quickly. The problem is that with high power of $2$ in $n$ the matrices become very very big and are impossible to store in memory.
+   
+   <img src="strassen.png" alt="strassen" style="zoom:50%;" />

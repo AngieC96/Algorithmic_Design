@@ -1,4 +1,4 @@
- n	Naive Alg.	Strassen's Alg.	Str. Alg.
+ n	Naive Alg.	Strassen's Alg.	Str. Alg. best
     1	0.000001	0.000020	0.000001
     2	0.000000	0.000000	0.000000
     4	0.000001	0.000000	0.000000
