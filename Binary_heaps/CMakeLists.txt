@@ -12,10 +12,6 @@ set( PROJECT_PATCH_LEVEL 1  )
 
 set( PROJECT_LIB_NAME binheap )
 
-IF(NOT DEFINED ${CMAKE_INSTALL_PREFIX})
-set(CMAKE_INSTALL_PREFIX "/usr")
-ENDIF(NOT DEFINED ${CMAKE_INSTALL_PREFIX})
-
 set(INCLUDE_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/include)
 set(LIBRARY_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/lib)
 
@@ -68,9 +64,13 @@ if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Linux")
 endif()
 
 target_link_libraries (${PROJECT_LIB_NAME} ${LIB_REQUIRED_LIBRARIES})
+set_property(TARGET ${PROJECT_LIB_NAME} PROPERTY C_STANDARD 99)
+set_target_properties(${PROJECT_LIB_NAME} PROPERTIES 
+	                   PUBLIC_HEADER "${PROJ_INCLUDES}")
 
 install (TARGETS ${PROJECT_LIB_NAME} 
-	LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR})
+	LIBRARY DESTINATION ${LIBRARY_INSTALL_DIR}
+	PUBLIC_HEADER DESTINATION ${INCLUDE_INSTALL_DIR})
 
 link_directories(${LINK_DIRS})
 include_directories(${INCLUDE_DIRS} ) 
@@ -81,11 +81,13 @@ FILE (GLOB TESTS_COMMON_SOURCES "${TESTS_COMMON_SRC_DIR}/*.c"
 	                            "${TESTS_COMMON_SRC_DIR}/*.h")
 add_library("common" ${TESTS_COMMON_SOURCES})
 target_link_libraries("common" ${PROJECT_LIB_NAME})
+set_property(TARGET "common" PROPERTY C_STANDARD 99)
 
 set( EXECUTABLES "test_delete_min" "test_insert")
 foreach( EXECUTABLE ${EXECUTABLES} )
    add_executable(${EXECUTABLE} "${TESTS_SRC_DIR}/${EXECUTABLE}.c")
    target_link_libraries(${EXECUTABLE} ${PROJECT_LIB_NAME} "common")
+   set_property(TARGET ${EXECUTABLE} PROPERTY C_STANDARD 99)
 endforeach( EXECUTABLE ${EXECUTABLES} )
 
 include( InstallRequiredSystemLibraries )
