@@ -34,7 +34,9 @@
 
   <img src="heap.png" alt="heap" style="zoom:50%;" />
 
-  We can see that ==????? for the heps the time of extraction is $O(log n)$==
+  We can see that ==????? for the heps the time of extraction is $O(log n)$==: replacing the root’s key costs $\Theta(1)$ and the total cost of $\texttt{HEAPIFY}$ is the height of the heap: $O(\log n)$, so deleting the minimum with the heaps costs $O(\log n)$.
+
+  <img src="onlyheap.png" alt="onlyheap" style="zoom:50%;" />
 
 - *(Ex. 6.1-7 in [[1]](#ref1)) Show that, with the array representation, the leaves of a binary heap containing $n$ nodes are indexed by $\lfloor n/2 \rfloor + 1, \lfloor n/2 \rfloor + 2, \ldots, n$.*
 
@@ -50,9 +52,12 @@
 
   Let us consider a binary heap of size $n$. Since a simple path from the root down to a leaf is the height of the tree $h$, we have to estimate $h$ in terms of $n$. In a binary tree the root has $2$ children at depth $1$, each of which has $2$ children at depth $2$, etc. Thus, the number of nodes ( $\equiv$ leaves) at depth $h$ is $2^h$. Consequently, the height of a complete binary tree with $m$ leaves, which is the length of the simple path from the root to a leaf, is $\log_2 m$. Since the number of leaves in a complete binary tree is $(n+1)/2$ ($n$ is always odd in a complete binary tree and the number of leaves is $\lceil n/2 \rceil$, as seen in the following exercise), we have that the height is $\log_n (n+1)/2 = \log_2 (n+1) - \log_2 2 = \log_2 (n+1) - 1$. So in the worst case, if $\texttt{HEAPIFY}$ is called for all the height of the tree, it is called $\Omega(\log n)$ times.
   
-  For example, with the following array $\texttt{HEAPIFY}$ is called recursively at every node on a simple path from the root down to a leaf:
+  For example, with the following array in a Min_heap, when the minimum is deleted $\texttt{HEAPIFY}$ is called recursively at every node on a simple path from the root down to a leaf:
   
-  
+  ```mermaid
+  graph LR
+  A(1) --- B(3) --- c(4) --- D(7) --- E(6) --- F(5) --- G(8)
+  ```
   
 - *(Ex. 6.3-3 in [[1]](#ref1)) Show that there are at most $\lceil n/2^{h+1} \rceil$ nodes of height $h$ in any $n$-element binary heap.*
 
@@ -80,7 +85,11 @@
   *where $\texttt{A}$ is an array. Compute the time-complexity of the algorithm when:*
 
   - $\texttt{build}$, $\texttt{is_empty} \in \Theta(1)$, $\texttt{extract_min} \in \Theta(|D|)$;
-  - $\texttt{build \in \Theta(|A|)}$, $\texttt{is_empty} \in \Theta(1)$, $\texttt{extract_min} \in O(\log n)$;
+  - $\texttt{build} \in \Theta(|A|)$, $\texttt{is_empty} \in \Theta(1)$, $\texttt{extract_min} \in O(\log n)$;
+  
+  In the first case, the time complexity is $\Theta(1) + |D| \cdot \Theta(|D|) = \Theta(|D|^2)$, since $\texttt{build}$ costs $\Theta(1)$ and the while is repeated until $D$ is empty, so $|D|$ times, with inside $\texttt{extract_min}$ that costs $\Theta(|D|)$.
+  
+  In the second case, $\Theta(|A|) + |D| \cdot O(\log n) = O(|A| + |D|\log n)$, since $\texttt{build}$ costs $\Theta(|A|)$ and the while is repeated until $D$ is empty, so $|D|$ times, with inside $\texttt{extract_min}$ that costs $O(\log n)$.
 
 ### References
 

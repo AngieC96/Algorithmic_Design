@@ -11,17 +11,23 @@
 #define INSTANCES 100
 #define STEPS 10
 
+#ifdef NO_OUTPUT
+#define PRINTF(...)
+#else
+#define PRINTF(...) printf(__VA_ARGS__)
+#endif
+
 int main(int argc, char *argv[])
 {	
-  printf("Setting up test sets...");
+  PRINTF("Setting up test sets...");
   fflush(stdout);
   
   float *test_set_A[INSTANCES], *test_set_H[INSTANCES];
   
   setup_test_set(test_set_A, test_set_H, INSTANCES, INSTANCE_SIZE);
  
-  printf("done\n\nBuild the data structure and keep ");
-  printf("removing the minimum\nn\tOn Heaps\tOn Arrays\n");
+  PRINTF("done\n\nBuild the data structure and keep ");
+  PRINTF("removing the minimum\nn\tOn Heaps\tOn Arrays\n");
   for (size_t j = 0; j < STEPS; j++) {
     unsigned int instance_size = (j*INSTANCE_SIZE)/(STEPS-1);
 

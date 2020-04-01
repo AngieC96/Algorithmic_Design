@@ -5,6 +5,8 @@ set( DESCRIPTION "libbinheap - A simple array-based implementation of binary hea
 
 set( CMAKE_BUILD_TYPE "Release" )
 
+#set(CMAKE_C_FLAGS "-DNO_OUTPUT")
+
 # project version
 set( PROJECT_MAJOR_VERSION 0  )
 set( PROJECT_MINOR_VERSION 0  ) 
