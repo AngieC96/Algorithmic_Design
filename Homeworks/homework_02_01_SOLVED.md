@@ -1,4 +1,4 @@
-# Binary Heaps: Homework 2
+# Binary Heaps: Homework
 
 
 
@@ -58,7 +58,18 @@
   graph LR
   A(1) --- B(3) --- c(4) --- D(7) --- E(6) --- F(5) --- G(8)
   ```
+  that corresponds to the tree
   
+  ```mermaid
+  graph TD;
+      1---3;
+      1---4;
+      3---7;
+      3---6;
+      4---5;
+      4---8
+  ```
+
 - *(Ex. 6.3-3 in [[1]](#ref1)) Show that there are at most $\lceil n/2^{h+1} \rceil$ nodes of height $h$ in any $n$-element binary heap.*
 
   > The height of a node in a tree is the number of edges on the longest simple downward path from the node to a leaf, and the height of a tree is the height of its root. The height of a tree is also equal to the largest depth of any node in the tree.
@@ -67,29 +78,7 @@
 
   Since all the nodes after $\lfloor n/2 \rfloor$ are leaves, we have $\lceil n/2 \rceil$ leaves, so we have $\lceil n/2^{0 + 1} \rceil$ nodes at height $0$. We have a binary heap, so we have a binary tree, thus the number of parents of the leaves will be half the number of the leaves, so we will have $\lceil (n/2)/2 \rceil = \lceil n/4 \rceil = \lceil n/2^{1 + 1} \rceil$ nodes at height 1. Let's assume that we have $\lceil n/2^{(i-1)+1} \rceil = \lceil n/2^i \rceil$ nodes at height $i-1$, their parents will be half of them, so they will be $\lceil (n/2^i)/2 \rceil = \lceil n/2^{i+1} \rceil$, so we have $\lceil n/2^{i+1} \rceil$ nodes at height $i$. So by induction we have $\lceil n/2^{h+1} \rceil$ nodes at height $h$, and we have proved our thesis. Besides, the root is at height $h = \log_2 n$, so we have $\lceil n/2^{\log_2 n + 1} \rceil = \lceil n/2n \rceil = \lceil 0,\ldots \rceil = 1$ node at height $h$.
 
-- *By modifying the code written during the last lessons, provide an array-based implementation of binary heaps which avoids to swap the elements in the array $\texttt{A}$.*
-  *(**Hint**: use two arrays, $\texttt{key_pos}$ and $\texttt{rev_pos}$, of natural numbers reporting the position of the key of a node and the node corresponding to a given position, respectively)*
 
-- *Consider the next algorithm:*
-
-  ```
-  def Ex2 ( A )
-  	D ← build ( A )
-  	
-  	while ¬ is_empty ( D )
-  		extract_min ( D )
-  	endwhile
-  enddef
-  ```
-
-  *where $\texttt{A}$ is an array. Compute the time-complexity of the algorithm when:*
-
-  - $\texttt{build}$, $\texttt{is_empty} \in \Theta(1)$, $\texttt{extract_min} \in \Theta(|D|)$;
-  - $\texttt{build} \in \Theta(|A|)$, $\texttt{is_empty} \in \Theta(1)$, $\texttt{extract_min} \in O(\log n)$;
-  
-  In the first case, the time complexity is $\Theta(1) + |D| \cdot \Theta(|D|) = \Theta(|D|^2)$, since $\texttt{build}$ costs $\Theta(1)$ and the while is repeated until $D$ is empty, so $|D|$ times, with inside $\texttt{extract_min}$ that costs $\Theta(|D|)$.
-  
-  In the second case, $\Theta(|A|) + |D| \cdot O(\log n) = O(|A| + |D|\log n)$, since $\texttt{build}$ costs $\Theta(|A|)$ and the while is repeated until $D$ is empty, so $|D|$ times, with inside $\texttt{extract_min}$ that costs $O(\log n)$.
 
 ### References
 
