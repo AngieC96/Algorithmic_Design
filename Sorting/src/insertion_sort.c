@@ -1,4 +1,5 @@
 #include "insertion_sort.h"
+#include "swap.h"
 
 void insertion_sort(void *A, const unsigned int n, 
                     const size_t elem_size, 
