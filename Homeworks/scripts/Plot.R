@@ -1,10 +1,10 @@
 setwd("/home/angela/Documenti/Algorithmic Design/Algorithmic_Design/Homeworks")
 
 ## save the workspace
-save.image("./data.RData")
+save.image("./scripts/data.RData")
 
 ## load the workspace
-load("data.RData")
+load("scripts/data.RData")
 
 
 ## Strassen's Algorithm
