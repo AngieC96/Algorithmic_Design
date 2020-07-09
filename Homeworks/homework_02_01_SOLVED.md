@@ -32,11 +32,11 @@
 
   In the following graph we can see the execution time of the program `test_delet_min`:
 
-  <img src="heap.png" alt="heap" style="zoom:50%;" />
+  <img src="figs/heap.png" alt="heap" style="zoom:40%;" />
 
   We can see that ==????? for the heps the time of extraction is $O(log n)$==: replacing the root’s key costs $\Theta(1)$ and the total cost of $\texttt{HEAPIFY}$ is the height of the heap: $O(\log n)$, so deleting the minimum with the heaps costs $O(\log n)$.
 
-  <img src="onlyheap.png" alt="onlyheap" style="zoom:50%;" />
+  <img src="figs/onlyheap.png" alt="onlyheap" style="zoom:40%;" />
 
 - *(Ex. 6.1-7 in [[1]](#ref1)) Show that, with the array representation, the leaves of a binary heap containing $n$ nodes are indexed by $\lfloor n/2 \rfloor + 1, \lfloor n/2 \rfloor + 2, \ldots, n$.*
 

@@ -58,7 +58,7 @@
      1024x3072x4096	69.019623	8.170306	8.084943	1 1
      ```
 
-       While on the new partition `frontend-beta` we have the following results:
+   While on the new partition `frontend-beta` we have the following results:
 
    - for square matrices:
 
@@ -106,4 +106,4 @@
 
    In the graph we can see that only in the last two pints the time is significantly different from 0. Unfortunately, we have too few significant points to establish with certainty that the complexity of the naive algorithm is $\Theta(n^3) = \Theta(n^{\log_2 8})$ and the one of the Strassen's algorithm is $\Theta(n^{\log_2 7})$, even though the graph is growing very quickly. The problem is that with high power of $2$ in $n$ the matrices become very very big and are impossible to store in memory.
    
-   <img src="strassen.png" alt="strassen" style="zoom:50%;" />
+   <img src="figs/strassen.png" alt="strassen" style="zoom:50%;" />

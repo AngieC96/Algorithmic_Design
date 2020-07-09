@@ -43,9 +43,15 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 Testing
-Makefile
+#Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+
+
+# Mine
+CMakeDoxyfile.in
+CMakeDoxygenDefaults.cmake
+doc/
