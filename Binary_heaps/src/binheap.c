@@ -14,7 +14,7 @@
 // It is like A[i] that it is not possible since we are using a pointer to void
 #define ADDR(H, node) ((H)->A+(node)*(H)->key_size)
 /* Returns the index of the node's address given */
-#define INDEX_OF(H, addr) (((addr)-((H)->A))/(H)->key_size)
+#define INDEX_OF(H, addr) (((addr)-((H)->A))/((H)->key_size))
 
 
 
@@ -47,7 +47,7 @@ void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b)
 
 void heapify(binheap_type *H, unsigned int node)
 {
-    unsigned int dst_node = node; // The node containing the minimoum among the node and its children
+    unsigned int dst_node = node; // The node containing the minimum among the node and its children
     unsigned int child;
 
     do {
@@ -56,13 +56,14 @@ void heapify(binheap_type *H, unsigned int node)
         // Find the minimoum among node and its children
         child = RIGHT_CHILD(node);
 
-        if(VALID_NODE(H, child) && H->leq(ADDR(H, child), ADDR(H, node))){  // If I am in a leaf VALID_NODE is false! Because a leaf doesn't have a right child
+        if(VALID_NODE(H, child) && H->leq(ADDR(H, child), ADDR(H, dst_node))){
+            // If I am in a leaf VALID_NODE is false! Because a leaf doesn't have a right child
             dst_node = child;
         }
 
         child = LEFT_CHILD(node);
 
-        if(VALID_NODE(H, child) && H->leq(ADDR(H, child), ADDR(H, node))){
+        if(VALID_NODE(H, child) && H->leq(ADDR(H, child), ADDR(H, dst_node))){
             dst_node = child;
         }
 
@@ -96,7 +97,7 @@ const void *find_the_max(void *A,
                          total_order_type leq)
 {
     if(num_of_elem==0){
-        return 0;
+        return NULL;
     }
 
     const void *max_value = A; // I take the first value in A
@@ -164,7 +165,7 @@ const void *decrease_key(binheap_type *H, void *node, const void *value)
     void *parent = ADDR(H, parent_idx);
 
     // While node != root and *parent> *node swap parent and node keys
-    while((node_idx != 0) && (!H->leq(parent, value))) {
+    while((node_idx != 0) && (!H->leq(parent, node))) {
         swap_keys(H, parent_idx, node_idx);
 
         // Focus on the node's parent
@@ -205,9 +206,8 @@ void print_heap(const binheap_type *H,
                 void (*key_printer)(const void *value))
 {
     unsigned int next_level_node = 1; // To store the index of the left-most node of the next level
-    unsigned int node = 0; // To store the node I am dealing with
 
-    for(unsigned int node =0; node < H->num_of_elem; node++){
+    for(unsigned int node = 0; node < H->num_of_elem; ++node){ // The node I am dealing with
         if(node == next_level_node){
             printf("\n");
             next_level_node = LEFT_CHILD(node);

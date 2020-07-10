@@ -26,7 +26,9 @@
 
   For **Insertion Sort, Quick Sort, Bubble Sort, Selection Sort, and Heap Sort** altogether we have
 
-  
+  <img src="figs/all.png" alt="all" style="zoom:50%;" />
+
+  We can see that the faster are Heap sort and Quick sort (it's under Heap sort), while the worst is Bubble sort.
 
 - *Argue about the following statement and answer the questions*
 

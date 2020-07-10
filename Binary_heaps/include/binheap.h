@@ -52,6 +52,28 @@ int is_heap_empty(const binheap_type *H);
 const void *min_value(const binheap_type *H);
 
 /**********************************************************************
+ * Swaps the keys of two nodes in a heap.
+ *
+ * @param H is the heap.
+ * @param n_a node a to swap.
+ * @param n_b node b to swap.
+ **********************************************************************/
+void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b);
+
+/**********************************************************************
+ * Restores the heap property.
+ *
+ * This function restores the heap property of a vector: it rearranges
+ * the nodes in the heap so that each parent is lower than its childern
+ * w.r.t to the total order of the heap.
+ *
+ * @param H is the heap whose minimum should be returned.
+ * @return a pointer to the minimum in the heap, if H is not empty; 
+ *         NULL otherwise.
+ **********************************************************************/
+void heapify(binheap_type *H, unsigned int node);
+
+/**********************************************************************
  * Extract the minimum from the heap and return a pointer to it.
  *
  * This function extracts the minimum value in the heap w.r.t. its 
@@ -64,6 +86,12 @@ const void *min_value(const binheap_type *H);
  *         NULL otherwise.
  **********************************************************************/
 const void *extract_min(binheap_type *H);
+
+
+const void *find_the_max(void *A, 
+                         const unsigned int num_of_elem,
+                         const size_t key_size, 
+                         total_order_type leq);
 
 /**********************************************************************
  * Build a new binary heap.
