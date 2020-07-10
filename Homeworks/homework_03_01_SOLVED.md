@@ -32,13 +32,57 @@
 
 - *Argue about the following statement and answer the questions*
 
-  1. *Heap Sort on a array $A$ whose length is n takes time $O(n)$.*
-  2. *Heap Sort on a array $A$ whose length is n takes time $\Omega(n)$.*
+  1. *Heap Sort on an array $A$ whose length is $n$ takes time $O(n)$.*
+
+     FALSE. The overall complexity of Heap Sort is $O(n \log n)$: `build_max_heap` costs $\Theta(n)$ and `extract_min`  costs $O(\log i)$ per iteration and in total
+     $$
+     T_H(n) = \Theta(n) + \sum_{i=2}^n O(\log i) \le O(n) + O \left( \sum_{i=2}^n \log n \right) = O(n \log n).
+     \nonumber
+     $$
+
+  2. *Heap Sort on an array $A$ whose length is $n$ takes time $\Omega(n)$.*
+
+     TRUE. From above we have that
+     $$
+     T_H(n) = O(n \log n) \ge \Omega(n)
+     \nonumber
+     $$
+     since taken a representative $c n \log n$ of $O(n \log n)$ we have that $c n \log n \ge d n$ for $n > 2$ and $c \ge d$.
+
   3. *What is the worst case complexity for Heap Sort?*
-  4. *Quick Sort on a array A whose length is n takes time $O(n^3)$.*
+
+     The worst case complexity of Heap sort is $O(n \log n)$, since the worst-case running time of `heapify` on a binary heap of size $n$ is $\Omega(\log n)$, as we have seen in the [homework_02_01](homework_02_01_SOLVED.pdf).
+
+  4. *Quick Sort on an array $A$ whose length is $n$ takes time $O(n^3)$.*
+
+     FALSE. We have that in the worst case Quick Sort takes time $\Theta(n^2)$:
+     $$
+     T_Q(|A|) = T_Q(|S|) + T_Q(|G|) + \Theta(|A|)
+     \nonumber
+     $$
+     and if $|G|=0$ or $|S|=0$ for all recursive call
+     $$
+     T_Q(n) = T_Q(n - 1) + \Theta(n) = \sum_{i=0}^n \Theta(i) =
+     \Theta\left( \sum_{i=0}^n i \right) = Θ(n^2).
+     \nonumber
+     $$
+     So we have that $T_Q \not\in O(n^3)$.
+
   5. *What is the complexity of Quick Sort?*
-  6. *Bubble Sort on a array A whose length is n takes time $\Omega(n)$.*
+
+     In point 4 we have seen that in the worst case $T_Q \in \Theta(n^2)$. In the best case, with a balanced partition, and in the average case we have that $T_Q \in \Theta(n \log n)$.
+
+  6. *Bubble Sort on an array $A$ whose length is $n$ takes time $\Omega(n)$.*
+
+     TRUE. Since Bubble Sort works by pair-wise swapping the maximum to the right, even if the vector is ordered we have to scan all the vector, so the cost is at least $n$, so $T_B(n) \in \Omega(n)$.
+
   7. *What is the complexity of Bubble Sort?*
+
+     we have that one swap-block costs $\Theta(1)$ and that the nested for-loop costs $\Theta(i)$, we have that
+     $$
+     T_B(n) = \sum_{i=2}^n \Theta(i) \cdot \Theta(1) = \Theta \left( \sum_{i=2}^n i \right) = \Theta(n^2).
+     \nonumber
+     $$
 
 - *Solve the following recursive equation:*
   $$
