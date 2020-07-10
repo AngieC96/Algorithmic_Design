@@ -1,4 +1,4 @@
-## Strassen's Algorithm
+# Strassen's Algorithm
 
 This folder contains some code to simplify the implementation and the testing of the Strassen's algorithm for matrix multiplication.
 

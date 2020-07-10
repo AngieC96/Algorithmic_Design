@@ -1,4 +1,4 @@
-## Sorting Algorithms
+# Sorting Algorithms
 
 This folder contains the implementation and testing of sorting algorithms. The algorithms implemented are: insertion sort, quick sort (with and without the select algorithm to identify the pivot), bubble sort, selection sort, and heap sort, but other algorithms can easily be added by editing the main function in the file [main.c](src/main.c).
 

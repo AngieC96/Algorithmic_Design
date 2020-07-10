@@ -1,4 +1,4 @@
-## Binary heaps
+# Binary heaps
 
 ### A simple binary heap library (and testing tools)
 
