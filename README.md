@@ -3,6 +3,12 @@ This repository contains the codes developed in the course "Algorithmic Design" 
 
 
 
+## Homeworks
+
+The folder [Homeworks](Homeworks) contains all the homeworks solved.
+
+
+
 ## Strassen's Algorithm
 
 The folder [Strassen_alg](Strassen_alg) contains some code to simplify the implementation and the testing of the Strassen's algorithm for matrix multiplication.
@@ -68,7 +74,7 @@ The documentation is built into the folder `$BLD/doc/`, where `$BLD` is your bui
 
 The folder [Binary_heaps](Binary_heaps) contains a template for a simple array-implementation of binary heaps in the C-programming language.
 
-This template contains all the code needed to test your implementation of binary heaps in both correctness and efficiency terms. Your are exclusively required to code the type `binheap_type` in the file [binheap.h](include/binheap.h) and all the functions dealing it in the file [binheap.c](src/binheap.c). The meaning of the function parameters and the semantics of the functions themselves are detailed in [binheap.h](include/binheap.h). Once this has been done, a set of tests can be produced as described below.
+This template contains all the code needed to test your implementation of binary heaps in both correctness and efficiency terms. Your are exclusively required to code the type `binheap_type` in the file [binheap.h](Binary_heaps/include/binheap.h) and all the functions dealing it in the file [binheap.c](Binary_heaps/src/binheap.c). The meaning of the function parameters and the semantics of the functions themselves are detailed in [binheap.h](Binary_heaps/include/binheap.h). Once this has been done, a set of tests can be produced as described below.
 
 You can generate the Makefile by using [cmake](https://cmake.org/) as follows:
 
@@ -105,7 +111,8 @@ In order to install the library, you can set the install directory `<BINHEAP_INS
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=<BINHEAP_INSTALL_DIR> CMakeLists.txt
 ```
 
-If you don't do it, the library and its headers will be installed in `/usr/local/`.
+If you don't do it, the library and its headers will be installed in `/usr/local/`. I've chosen the folder `'~/Documenti/Algorithmic Design/Algorithmic_Design/Binary_heaps'`.
+
 After that simply write:
 
 ```bash
@@ -116,9 +123,9 @@ make install
 
 ## Sorting Algorithms
 
-The folder [Sorting](Sorting) contains some code to simplify the implementation and testing of sorting algorithms. The code natively support insertion sort, quick sort (with and without the select algorithm to identify the pivot), bubble sort, selection sort, and heap sort, but other algorithms can easily be added by editing the main function in the file [main.c](src/main.c).
+The folder [Sorting](Sorting) contains the implementation and testing of sorting algorithms. The algorithms implemented are: insertion sort, quick sort (with and without the select algorithm to identify the pivot), bubble sort, selection sort, and heap sort, but other algorithms can easily be added by editing the main function in the file [main.c](Sorting/src/main.c).
 
-In order to test the differences in term of execution-time between the sorting algorithms, you need to implement all of them. The insertion sort algorithm must be implemented in the file [insertion_sort.c](src/insertion_sort.c) according to the API defined in [insertion_sort.h](src/insertion_sort.h); the quick sort algorithm in the file [quick_sort.c](src/quick_sort.c) and, so forward, for all the algorithms.
+In order to test the differences in term of execution-time between the sorting algorithms, all of them are implemented. The insertion sort algorithm is implemented in the file [insertion_sort.c](Sorting/src/insertion_sort.c) according to the API defined in [insertion_sort.h](Sorting/src/insertion_sort.h); the quick sort algorithm is in the file [quick_sort.c](Sorting/src/quick_sort.c) and, so forward, for all the algorithms.
 
 
 A Makefile can be produced by using [cmake](https://cmake.org/) as follows:
@@ -127,13 +134,13 @@ A Makefile can be produced by using [cmake](https://cmake.org/) as follows:
 cmake -G "Unix Makefiles" CMakeLists.txt
 ```
 
-If you have implemented the [`binheap` library](https://github.com/albertocasagrande/AD_bin_heaps), you can use it to code heap sort by using the command:
+You have to use the [`binheap` library](Binary_heaps) to compile heap sort, and you can do it by using the command:
 
 ```bash
 cmake -G "Unix Makefiles" -DBINHEAP_PATH=<BINHEAP_INSTALL_DIR> CMakeLists.txt
 ```
 
-See [here](https://github.com/albertocasagrande/AD_bin_heaps) to have more details about `<BINHEAP_INSTALL_DIR>`.
+See [here](##Installing the library) to have more details about `<BINHEAP_INSTALL_DIR>`.
 
 Afterwards you can compile the code by executing `make`. This produces an executable named `test_sorting` which can be executed in POSIX systems by using the command:
 
@@ -199,6 +206,6 @@ Size	Quick Sort  	Quick Sort +	Heap Sort
 2^20	0.000110 (KO)	0.000110 (KO)	0.000075 (KO)
 ```
 
-The first column in the output report the size of the tested array. The remaining columns in the output report the execution-time in seconds of the implementations of sorting algorithms. Whenever the resulting arrays are not sorted (e.g., due to a bug) the word "KO" follows the execution-time. Since the algorithms are not implemented in the repository, `test_sorting` initially reports 0 seconds for all of the algorithms and all the resulting arrays (but the best case for insertion sort and the worst case for quick sort which are already ordered) are not sorted. 
+The first column in the output report the size of the tested array. The remaining columns in the output report the execution-time in seconds of the implementations of sorting algorithms. Whenever the resulting arrays are not sorted (e.g., due to a bug) the word "KO" follows the execution-time.
 
-In order to better compare quick sort and heap sort on the random cases, a futher set of tests on larger arrays are also performed.
+In order to better compare quick sort and heap sort on the random cases, a further set of tests on larger arrays are also performed.
