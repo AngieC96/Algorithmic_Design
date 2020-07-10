@@ -39,6 +39,7 @@
      T_H(n) = \Theta(n) + \sum_{i=2}^n O(\log i) \le O(n) + O \left( \sum_{i=2}^n \log n \right) = O(n \log n).
      \nonumber
      $$
+     Hence in the worst case and in the average case $T_H(n) \not\in O(n)$, this anyway happens if the vector is made of all equal elements, since `extract_min` would cost $\Theta(1)$ because we won't have to restore the heap property by calling `heapify`.
 
   2. *Heap Sort on an array $A$ whose length is $n$ takes time $\Omega(n)$.*
 
@@ -55,7 +56,7 @@
 
   4. *Quick Sort on an array $A$ whose length is $n$ takes time $O(n^3)$.*
 
-     FALSE. We have that in the worst case Quick Sort takes time $\Theta(n^2)$:
+     TRUE. We have that in the worst case Quick Sort takes time $\Theta(n^2)$:
      $$
      T_Q(|A|) = T_Q(|S|) + T_Q(|G|) + \Theta(|A|)
      \nonumber
@@ -66,7 +67,7 @@
      \Theta\left( \sum_{i=0}^n i \right) = Θ(n^2).
      \nonumber
      $$
-     So we have that $T_Q \not\in O(n^3)$.
+     So we have that $T_Q \in O(n^3)$ since $\Theta(n^2) \subseteq O(n^3)$.
 
   5. *What is the complexity of Quick Sort?*
 
@@ -78,7 +79,7 @@
 
   7. *What is the complexity of Bubble Sort?*
 
-     we have that one swap-block costs $\Theta(1)$ and that the nested for-loop costs $\Theta(i)$, we have that
+     We have that one swap-block costs $\Theta(1)$ and that the nested for-loop costs $\Theta(i)$, we have that
      $$
      T_B(n) = \sum_{i=2}^n \Theta(i) \cdot \Theta(1) = \Theta \left( \sum_{i=2}^n i \right) = \Theta(n^2).
      \nonumber

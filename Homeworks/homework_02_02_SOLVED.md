@@ -8,11 +8,11 @@
 - *Consider the next algorithm:*
 
   ```
-  def Ex2 ( A )
-  	D ← build ( A )
+  def Ex2(A)
+  	D ← build(A)
   	
-  	while ¬ is_empty ( D )
-  		extract_min ( D )
+  	while ¬ is_empty(D)
+  		extract_min(D)
   	endwhile
   enddef
   ```
