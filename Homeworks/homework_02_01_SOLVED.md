@@ -12,7 +12,7 @@
 
 - *Test the implementation on a set of instances of the problem and evaluate the execution time.*
 
-  After running `test_delet_min` the following output was generated:
+  After running the program [`test_delet_min`](../Binary_heaps/tests/test_delete_min.c), contained in the folder [Binary_heaps/tests](../Binary_heaps/tests) the following output was generated:
 
   ```bash
   $ ./test_delete_min
@@ -30,13 +30,19 @@
   16384   0.219621        76.866161
   ```
 
-  In the following graph we can see the execution time of the program `test_delet_min`:
+  In the following graph we can see the execution time of the program [`test_delet_min`](../Binary_heaps/tests/test_delete_min.c):
 
   <img src="figs/heap.png" alt="heap" style="zoom:40%;" />
 
-  We can see that ==????? for the heps the time of extraction is $O(log n)$==: replacing the root’s key costs $\Theta(1)$ and the total cost of $\texttt{HEAPIFY}$ is the height of the heap: $O(\log n)$, so deleting the minimum with the heaps costs $O(\log n)$.
+  We can clearly see that the implementation that uses heaps instead of arrays is much much more efficient.
+
+  We have that for the heaps the time of extraction is $O(\log n)$: replacing the root’s key costs $\Theta(1)$ and the total cost of $\texttt{HEAPIFY}$ is the height of the heap, $O(\log n)$, so deleting the minimum with the heaps costs $O(\log n)$. However, in this plot it is hard to see.
+
+  In the following graph we can better see the execution time using the heaps:
 
   <img src="figs/onlyheap.png" alt="onlyheap" style="zoom:40%;" />
+
+  Here we can see a bit better the logarithmic trend of the program.
 
 - *(Ex. 6.1-7 in [[1]](#ref1)) Show that, with the array representation, the leaves of a binary heap containing $n$ nodes are indexed by $\lfloor n/2 \rfloor + 1, \lfloor n/2 \rfloor + 2, \ldots, n$.*
 
