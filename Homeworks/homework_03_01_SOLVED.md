@@ -16,7 +16,15 @@
 
   <img src="figs/insertion_sort.png" alt="insertion_sort" style="zoom:50%;" />
 
-  For **Quick sort** we have
+  We can see that, as expected, the worst case (red) is the one that performs the worst, the random case (blue) is the one in the middle and the best case (green) is the one that performs better.
+
+  For **Quick Sort** we have:
+
+  <img src="figs/quick_sort.png" alt="quick_sort" style="zoom:50%;" />
+
+  Again as expected the worst case takes more time than a random case.
+
+  For **Insertion Sort, Quick Sort, Bubble Sort, Selection Sort, and Heap Sort** altogether we have
 
   
 

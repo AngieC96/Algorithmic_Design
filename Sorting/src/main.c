@@ -43,7 +43,7 @@ int main(int argc, char *argv[])
     }
 
     unsigned int i;
-    printf("Size\tInsertion Sort\t          \t        \n");
+    /* printf("Size\tInsertion Sort\t          \t        \n");
     printf("    \t(Random Case)\t(Best Case)\t(Worst Case)");
     for (i=2; (1<<i)<=MAX_SIZE_ALL; i++) {
         const unsigned int A_size=1<<i;
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
                        A_size, sizeof(int),
                        leq_int, NUM_OF_REPETITIONS);
     }
-    printf("\n\n\n");
+    printf("\n\n\n"); */
 
     printf("Size\tQuick Sort\t           \tQuick Sort + Select\n");
     printf("    \t(Random Case)\t(Worst Case)\t(Random Case)\t(Worst Case)");

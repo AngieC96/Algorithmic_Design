@@ -26,4 +26,10 @@ void quick_sort(void *A, const unsigned int n,
                 const size_t elem_size, 
                 total_order leq);
 
+void quick_sort_aux(void *A, const int l, const int r, 
+                const size_t elem_size, total_order leq);
+
+int partition(void *A, const int l, const int r, const int p, 
+                const size_t elem_size, total_order leq);
+
 #endif // __QUICK_SORT__
