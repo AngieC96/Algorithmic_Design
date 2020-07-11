@@ -1,0 +1,118 @@
+\hypertarget{matrix_8c}{}\section{matrix.\+c File Reference}
+\label{matrix_8c}\index{matrix.\+c@{matrix.\+c}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}matrix.\+h\char`\"{}}\newline
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{matrix_8c_ae26c2b6b88e888354fad22cc4cf8c2b5}{naive\+\_\+matrix\+\_\+multiplication} (float $\ast$$\ast$C, float const $\ast$const $\ast$const A, float const $\ast$const $\ast$const B, const size\+\_\+t n)
+\begin{DoxyCompactList}\small\item\em Naive algorithm for matrix multiplication. \end{DoxyCompactList}\item 
+int \hyperlink{matrix_8c_a329c4f43511673f5cb050421d9132939}{same\+\_\+matrix} (float const $\ast$const $\ast$const A, float const $\ast$const $\ast$const B, const size\+\_\+t rows, const size\+\_\+t cols)
+\begin{DoxyCompactList}\small\item\em Checks if two matrices are equal. \end{DoxyCompactList}\item 
+float $\ast$$\ast$ \hyperlink{matrix_8c_ac51a8fb2c3793ffcb1f6110df01fe61e}{allocate\+\_\+matrix} (const size\+\_\+t rows, const size\+\_\+t cols)
+\begin{DoxyCompactList}\small\item\em Allocates a matrix. \end{DoxyCompactList}\item 
+void \hyperlink{matrix_8c_ae745f8a5836db0c09455fbb4ae555adb}{deallocate\+\_\+matrix} (float $\ast$$\ast$A, const size\+\_\+t rows)
+\begin{DoxyCompactList}\small\item\em Deallocates a matrix. \end{DoxyCompactList}\item 
+float $\ast$$\ast$ \hyperlink{matrix_8c_ad932b1470c60de7c5901972c463ab279}{allocate\+\_\+random\+\_\+matrix} (const size\+\_\+t rows, const size\+\_\+t cols)
+\begin{DoxyCompactList}\small\item\em Allocates a random matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Documentation for this file. 
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{matrix_8c_ac51a8fb2c3793ffcb1f6110df01fe61e}\label{matrix_8c_ac51a8fb2c3793ffcb1f6110df01fe61e}} 
+\index{matrix.\+c@{matrix.\+c}!allocate\+\_\+matrix@{allocate\+\_\+matrix}}
+\index{allocate\+\_\+matrix@{allocate\+\_\+matrix}!matrix.\+c@{matrix.\+c}}
+\subsubsection{\texorpdfstring{allocate\+\_\+matrix()}{allocate\_matrix()}}
+{\footnotesize\ttfamily float$\ast$$\ast$ allocate\+\_\+matrix (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{rows,  }\item[{const size\+\_\+t}]{cols }\end{DoxyParamCaption})}
+
+
+
+Allocates a matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & The number of rows. \\
+\hline
+{\em cols} & The number of columns.\\
+\hline
+\end{DoxyParams}
+This function allocates a matrix in the heap. \mbox{\Hypertarget{matrix_8c_ad932b1470c60de7c5901972c463ab279}\label{matrix_8c_ad932b1470c60de7c5901972c463ab279}} 
+\index{matrix.\+c@{matrix.\+c}!allocate\+\_\+random\+\_\+matrix@{allocate\+\_\+random\+\_\+matrix}}
+\index{allocate\+\_\+random\+\_\+matrix@{allocate\+\_\+random\+\_\+matrix}!matrix.\+c@{matrix.\+c}}
+\subsubsection{\texorpdfstring{allocate\+\_\+random\+\_\+matrix()}{allocate\_random\_matrix()}}
+{\footnotesize\ttfamily float$\ast$$\ast$ allocate\+\_\+random\+\_\+matrix (\begin{DoxyParamCaption}\item[{const size\+\_\+t}]{rows,  }\item[{const size\+\_\+t}]{cols }\end{DoxyParamCaption})}
+
+
+
+Allocates a random matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & The number of rows. \\
+\hline
+{\em cols} & The number of columns.\\
+\hline
+\end{DoxyParams}
+This function allocates a matrix in the heap and fills it with {\bfseries float} random numbers. \mbox{\Hypertarget{matrix_8c_ae745f8a5836db0c09455fbb4ae555adb}\label{matrix_8c_ae745f8a5836db0c09455fbb4ae555adb}} 
+\index{matrix.\+c@{matrix.\+c}!deallocate\+\_\+matrix@{deallocate\+\_\+matrix}}
+\index{deallocate\+\_\+matrix@{deallocate\+\_\+matrix}!matrix.\+c@{matrix.\+c}}
+\subsubsection{\texorpdfstring{deallocate\+\_\+matrix()}{deallocate\_matrix()}}
+{\footnotesize\ttfamily void deallocate\+\_\+matrix (\begin{DoxyParamCaption}\item[{float $\ast$$\ast$}]{A,  }\item[{const size\+\_\+t}]{rows }\end{DoxyParamCaption})}
+
+
+
+Deallocates a matrix. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em rows} & The number of rows. \\
+\hline
+{\em cols} & The number of columns.\\
+\hline
+\end{DoxyParams}
+This function deallocates a matrix from the heap. \mbox{\Hypertarget{matrix_8c_ae26c2b6b88e888354fad22cc4cf8c2b5}\label{matrix_8c_ae26c2b6b88e888354fad22cc4cf8c2b5}} 
+\index{matrix.\+c@{matrix.\+c}!naive\+\_\+matrix\+\_\+multiplication@{naive\+\_\+matrix\+\_\+multiplication}}
+\index{naive\+\_\+matrix\+\_\+multiplication@{naive\+\_\+matrix\+\_\+multiplication}!matrix.\+c@{matrix.\+c}}
+\subsubsection{\texorpdfstring{naive\+\_\+matrix\+\_\+multiplication()}{naive\_matrix\_multiplication()}}
+{\footnotesize\ttfamily void naive\+\_\+matrix\+\_\+multiplication (\begin{DoxyParamCaption}\item[{float $\ast$$\ast$}]{C,  }\item[{float const $\ast$const $\ast$const}]{A,  }\item[{float const $\ast$const $\ast$const}]{B,  }\item[{const size\+\_\+t}]{n }\end{DoxyParamCaption})}
+
+
+
+Naive algorithm for matrix multiplication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em C} & The matrix where to put the result. \\
+\hline
+{\em A} & The first matrix of the multiplication. \\
+\hline
+{\em B} & The second matrix of the multiplication. \\
+\hline
+{\em n} & The dimension of the matrices.\\
+\hline
+\end{DoxyParams}
+This function implements the naive algorithm for matrix multiplication between sub-\/matrixes. The result is placed in the sub-\/matrix C. \mbox{\Hypertarget{matrix_8c_a329c4f43511673f5cb050421d9132939}\label{matrix_8c_a329c4f43511673f5cb050421d9132939}} 
+\index{matrix.\+c@{matrix.\+c}!same\+\_\+matrix@{same\+\_\+matrix}}
+\index{same\+\_\+matrix@{same\+\_\+matrix}!matrix.\+c@{matrix.\+c}}
+\subsubsection{\texorpdfstring{same\+\_\+matrix()}{same\_matrix()}}
+{\footnotesize\ttfamily int same\+\_\+matrix (\begin{DoxyParamCaption}\item[{float const $\ast$const $\ast$const}]{A,  }\item[{float const $\ast$const $\ast$const}]{B,  }\item[{const size\+\_\+t}]{rows,  }\item[{const size\+\_\+t}]{cols }\end{DoxyParamCaption})}
+
+
+
+Checks if two matrices are equal. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em A} & The first matrix. \\
+\hline
+{\em B} & The second matrix. \\
+\hline
+{\em rows} & The number of rows. \\
+\hline
+{\em cols} & The number of columns.\\
+\hline
+\end{DoxyParams}
+This function checks if two matrices are equal. It returns 0 if they are different, 1 if they are equal. 

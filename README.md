@@ -15,7 +15,7 @@ The folder [Strassen_alg](Strassen_alg) contains some code to simplify the imple
 
 In order to test the differences in term of execution-time between the naive algorithm and the Strassen's algorithm, both the algorithms are implemented. The former is implemented by the function `naive_matrix_multiplication` in the file [matrix.c](Strassen_alg/matrix.c) and the latter by the function `strassen_matrix_multiplication` in the file [strassen.c](Strassen_alg/strassen.c).
 
-The branch `rectangular` contains the implementation of the two functions adapted to work also with rectangular matrices.
+The folder [Strassen_alg_rect](Strassen_alg_rect) contains the implementation of the two functions adapted to work also with rectangular matrices.
 
 ### How to compile
 

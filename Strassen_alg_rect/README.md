@@ -1,6 +1,6 @@
 # Strassen's Algorithm
 
-This folder contains some code to simplify the implementation and the testing of the Strassen's algorithm for matrix multiplication.
+This folder contains some code to simplify the implementation and the testing of the Strassen's algorithm for rectangular matrix multiplication.
 
 In order to test the differences in term of execution-time between the naive algorithm and the Strassen's algorithm, both the algorithms are implemented. The former is implemented by the function `naive_matrix_multiplication` in the file [matrix.c](matrix.c) and the latter by the function `strassen_matrix_multiplication` in the file [strassen.c](strassen.c).
 
