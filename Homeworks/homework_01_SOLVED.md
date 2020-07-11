@@ -16,10 +16,12 @@
 
    The solution can be found in the function `strassen_matrix_multiplication_best` (and consequently in the function `strassen_aux_best`), contained in the file `strassen.c` in the folder [Strassen_alg](../Strassen_alg).
 
+   I used only $2$ matrices `SA` and `SB` for the $S$ matrices, instead of allocating $10$ matrices, while for the $P$ matrices I used $4$ matrices (`PA`, `PB`, `PC`, `PD`) instead of $7$. I firstly computed $P_2, P_4, P_5$ and $P_6$ in `PA`, `PB`, `PC`, `PD` respectively, to be able to compute $C_{11}$, then I computed $P_1$ in `PD` (so replacing $P_6$) to be able to compute $C_{12}$, then I computed $P_3$ in `PA` (so replacing $P_2$) to be able to compute $C_{21}$, lastly I computed $P_7$ in `PB` (so replacing $P_4$) to be able to compute the last matrix $C_{22}$.
+
    I compiled and run the code on Ulysses cluster in Sissa, for both square and rectangular matrices. The output was
 
    - for square matrices:
-
+   
      ```bash
      ./strassen_test.x
      
@@ -36,11 +38,11 @@
        512	0.905262	0.089764	0.086891	1 1
       1024	8.541473	0.627640	0.612996	1 1
       2048	66.494477	4.420142	4.326053	1 1
-      4096	185.323830	31.036216	30.434407	1 1
+   4096	185.323830	31.036216	30.434407	1 1
      ```
 
    - for rectangular matrices:
-
+   
      ```bash
      ./strassen_test.x
      
@@ -55,13 +57,13 @@
       128x 384x 512	0.172694	0.174371	0.174951	1 1
       256x 768x1024	1.452749	0.465220	0.463335	1 1
       512x1536x2048	12.976235	1.766585	1.750519	1 1
-     1024x3072x4096	69.019623	8.170306	8.084943	1 1
+  1024x3072x4096	69.019623	8.170306	8.084943	1 1
      ```
 
    While on the new partition `frontend-beta` we have the following results:
 
    - for square matrices:
-
+   
      ```bash
      ./strassen_test.x
      
@@ -78,11 +80,11 @@
        512	0.211942	0.109676	0.100745	1 1
       1024	1.380608	0.741221	0.714642	1 1
       2048	19.931641	5.106519	5.021268	1 1
-      4096	257.180293	35.810735	35.314176	1 1
+   4096	257.180293	35.810735	35.314176	1 1
      ```
 
    - for rectangular matrices:
-
+   
      ```bash
      ./strassen_test.x
      
@@ -97,13 +99,19 @@
       128x 384x 512	0.039687	0.039087	0.039437	1 1
       256x 768x1024	0.294623	0.199306	0.196376	1 1
       512x1536x2048	2.336765	1.403819	1.380727	1 1
-     1024x3072x4096	65.748678	9.800090	9.665999	1 1
+  1024x3072x4096	65.748678	9.800090	9.665999	1 1
      ```
 
    We can see that the Strassen's algorithm is much better than the naive one, while the Strassen's algorithm with reduced memory allocations is only slightly better. Besides, it seems that on the new partition of Ulysses the times are a bit higher.
 
    
-
-   In the graph we can see that only in the last two pints the time is significantly different from 0. Unfortunately, we have too few significant points to establish with certainty that the complexity of the naive algorithm is $\Theta(n^3) = \Theta(n^{\log_2 8})$ and the one of the Strassen's algorithm is $\Theta(n^{\log_2 7})$, even though the graph is growing very quickly. The problem is that with high power of $2$ in $n$ the matrices become very very big and are impossible to store in memory.
    
-   <img src="figs/strassen.png" alt="strassen" style="zoom:50%;" />
+   In the following graphs we can see that only in the last two/three points the time is significantly different from $0$. Unfortunately, we have too few significant points to establish with certainty that the complexity of the naive algorithm is $\Theta(n^3) = \Theta(n^{\log_2 8})$ and the one of the Strassen's algorithm is $\Theta(n^{\log_2 7})$, even though the graph is growing very quickly. The problem is that with high power of $2$ in $n$ the matrices become very very big and are impossible to store in memory.
+   
+   <img src="figs/strassen_vs_naive.png" alt="strassen_vs_naive" style="zoom:50%;" />
+   
+   We can see that the Strassen's algorithm is much much more efficient than the naive algorithm.
+   
+   <img src="figs/strassen_vs_best.png" alt="strassen_vs_best" style="zoom:50%;" />
+
+Moreover, we can see that the Strassen's algorithm which uses only $6$ matrices instead of $17$ is also faster,beside being more memory efficient.

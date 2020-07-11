@@ -7,8 +7,13 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O4")
 
-add_executable (strassen_test.x main.c matrix.c strassen.c test.c)
+FILE (GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.c"
+	               "${PROJECT_SOURCE_DIR}/include/*.h")
 
+include_directories("${PROJECT_SOURCE_DIR}/include")
+
+#add_executable (strassen_test.x main.c matrix.c strassen.c test.c)
+add_executable (strassen_test.x ${SOURCES})
 
 # first we can indicate the documentation build as an option and set it to ON by default
 option(BUILD_DOC "Build documentation" ON)
