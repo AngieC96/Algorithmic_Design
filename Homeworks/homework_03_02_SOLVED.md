@@ -2,13 +2,11 @@
 
 1. <a name="point1"></a> *Generalize the $\mathtt{SELECT}$ algorithm to deal also with repeated values and prove that it still belongs to $O(n)$.*
 2. *Download the latest version of the code from*
-                                                                              *https://github.com/albertocasagrande/AD_sorting*
+                                                                                                                   *https://github.com/albertocasagrande/AD_sorting*
 *and*
-                                     
                                      - *Implement the $\texttt{SELECT}$ algorithm of Ex. [1](#point1).*
                                      - *Implement a variant of the $\texttt{QUICK SORT}$ algorithm using above-mentioned $\texttt{SELECT}$ to identify the best pivot for partitioning.*
-- *Draw a curve to represent the relation between the input size and the execution-time of the two variants of $\texttt{QUICK SORT}$ (i.e, those of Ex. 2 and Ex. 1 of [this file](#homework_03_01_SOLVED.md)) and discuss about their complexities.*
-                                     
+                                     - *Draw a curve to represent the relation between the input size and the execution-time of the two variants of $\texttt{QUICK SORT}$ (i.e, those of Ex. 2 and Ex. 1 of [this file](#homework_03_01_SOLVED.md)) and discuss about their complexities.*                                   
 3. *(Ex. 9.3-1 in [[1]](#ref1)) In the algorithm $\texttt{SELECT}$, the input elements are divided into chunks of $5$. Will the algorithm work in linear time if they are divided into chunks of $7$? What about chunks of $3$?*
 4. *(Ex. 9.3-5 in [[1]](#ref1) Suppose that you have a "black-box" worst-case linear-time subroutine to get the position in $A$ of the value that would be in position $n/2$ if $A$ was sorted. Give a simple, linear-time algorithm that solves the selection problem for an arbitrary position $i$.*
 5. *Solve the following recursive equations by using both the recursion tree and the substitution method:*
