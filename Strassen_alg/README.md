@@ -6,7 +6,8 @@ In order to test the differences in term of execution-time between the naive alg
 
 ### How to compile
 
-A Makefile can be produced by using [cmake](https://cmake.org/) as follows:
+A Makefile is provided. You can also produce a Makefile by using [cmake](https://cmake.org/) as follows:
+
 ```bash
 cmake -G "Unix Makefiles" CMakeLists.txt
 ```

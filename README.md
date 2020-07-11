@@ -19,7 +19,7 @@ The folder [Strassen_alg_rect](Strassen_alg_rect) contains the implementation of
 
 ### How to compile
 
-A Makefile can be produced by using [cmake](https://cmake.org/) as follows:
+A Makefile is provided. You can also produce a Makefile by using [cmake](https://cmake.org/) as follows:
 ```bash
 cmake -G "Unix Makefiles" CMakeLists.txt
 ```
