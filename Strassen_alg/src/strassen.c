@@ -3,7 +3,7 @@
  * Documentation for this file.
  */
  
- #include "matrix.h"
+#include "matrix.h"
 
 /**
  * @brief Subtracts two matrices.
@@ -49,7 +49,7 @@ void sub_matrix_blocks(float **C, float const *const *const A,
  * @param B_f_col The starting point on the columns of the sub-matrix of B.
  * @param n The dimension of the matrices.
  * 
- * This function performs the element-wise sum ofA and B and puts the
+ * This function performs the element-wise sum of A and B and puts the
  * resulting sub-matrix in C.
  * The parameters *_f_row and *_f_col represents the first row and the first
  * column, respectively, of the sub-matrix we want to deal with.

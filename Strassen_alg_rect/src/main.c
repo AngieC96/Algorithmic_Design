@@ -35,47 +35,61 @@
  */
  
 #include <stdio.h>
+#include <stdlib.h>
 #include "test.h"
 #include "matrix.h"
 #include "strassen.h"
 
 
 int main(int argc, char *argv[]) {
-  size_t n = 1 << 12;  // This is 2^12: the left shift operator (<<) converts 1 to binary 0001, adds 12 zeros getting 0001000000000000. Converting this to integer one gets 4096, which is actually 2^12
-  size_t m = 1 << 12;
-  size_t p = 1 << 12;
 
-  float **A = allocate_random_matrix(n, m);
-  float **B = allocate_random_matrix(m, p);
-  float **C0 = allocate_matrix(n, p);
-  float **C1 = allocate_matrix(n, p);
-  float **C2 = allocate_matrix(n, p);
+  size_t n = 1 << 14;
 
+  float **A = allocate_random_matrix(n, n);
+  float **B = allocate_random_matrix(n, n);
+  float **C0 = allocate_matrix(n, n);
+  float **C1 = allocate_matrix(n, n);
+  float **C2 = allocate_matrix(n, n);
 
   printf("       dim\tNaive Alg.\tStrassen's Alg.\tStr. Alg. best\tSame result\n");
-  for (size_t j = 1; j <= n; j *= 2) {
-    size_t i=3*j;
-    size_t k=4*j;
+  size_t i = 1, j = 1;
+  for (size_t k = 1; k <= n; k *= 7) {
+    if (k > 1){
+      i *= 3;
+      j *= 5;
+    }
 
-    printf("%4ldx%4ldx%4ld\t", j, i, k);
+    printf("%4ldx%4ldx%4ld\t", i, j, k);
     fflush(stdout);
  
-    printf("%lf\t", test(naive_matrix_multiplication, C0, A, B, j, i, k));
+    printf("%lf\t", test(naive_matrix_multiplication, C0, A, B, i, j, k));
     fflush(stdout);
-    printf("%lf\t", test(strassen_matrix_multiplication, C1, A, B, j, i, k));
+    printf("%lf\t", test(strassen_matrix_multiplication, C1, A, B, i, j, k));
     fflush(stdout);
 
-    printf("%lf\t", test(strassen_matrix_multiplication_best, C2, A, B, j, i, k));
+    printf("%lf\t", test(strassen_matrix_multiplication_best, C2, A, B, i, j, k));
     fflush(stdout);
 
     printf("%d ", same_matrix((float const *const *const)C0,
-                                 (float const *const *const)C1, j, k));
+                                 (float const *const *const)C1, i, k));
     printf("%d\n", same_matrix((float const *const *const)C0,
-                                 (float const *const *const)C2, j, k));
+                                 (float const *const *const)C2, i, k));
   }
 
+  // printf("\nMatrix A\n");
+  // print_matrix((float const *const *const)A, i, j);
+  // printf("\nMatrix B\n");
+  // print_matrix((float const *const *const)B, j, k);
+
+  // printf("\nNaive algorithm\n");
+  // print_matrix((float const *const *const)C0, i, k);
+  // printf("\nStrassen's algorithm\n");
+  // print_matrix((float const *const *const)C1, i, k);
+  // printf("\nStrassen's best algorithm\n");
+  // print_matrix((float const *const *const)C2, i, k);
+
   deallocate_matrix(A, n);
-  deallocate_matrix(B, m);
+  deallocate_matrix(B, n);
   deallocate_matrix(C0, n);
   deallocate_matrix(C1, n);
   deallocate_matrix(C2, n);

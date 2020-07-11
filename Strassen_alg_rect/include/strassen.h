@@ -2,6 +2,7 @@
 
 void strassen_matrix_multiplication(float **C, float const *const *const A,
                                     float const *const *const B, size_t n, size_t m, size_t p);
+
 void strassen_matrix_multiplication_best(float **C, float const *const *const A,
                                     float const *const *const B, size_t n, size_t m, size_t p);
 

@@ -3,9 +3,6 @@
  * Documentation for this file.
  */
  
-#include <stdio.h>
-#include <stdlib.h>
-
 #include "matrix.h"
 
 /**
@@ -13,7 +10,9 @@
  * @param C The matrix where to put the result.
  * @param A The first matrix of the multiplication.
  * @param B The second matrix of the multiplication.
- * @param n The dimension of the matrices.
+ * @param n The rows of the A matrix.
+ * @param m The columns of the A matrix.
+ * @param p The columns of the B matrix.
  * 
  * This function implements the naive algorithm for matrix multiplication between
  * rectangular matrixes. The result is placed in the sub-matrix C.
@@ -26,7 +25,7 @@ void naive_matrix_multiplication(float **C, float const *const *const A,
   for(size_t y = 0; y < n; ++y){
     for(size_t x = 0; x < p; ++x) {
       float value = 0.0;  // We don't need to derefrenece
-      for(size_t z = 0;z < m; ++z){
+      for(size_t z = 0; z < m; ++z){
         value += A[y][z] * B[z][x];
       }
       C[y][x] = value;
@@ -58,6 +57,22 @@ int same_matrix(float const *const *const A, float const *const *const B,
 }
 
 /**
+ * @brief Prints a matrix.
+ * @param A The matrix to be printed.
+ * @param rows The number of rows.
+ * @param cols The number of columns.
+ */
+void print_matrix(float const *const *const A,
+                const size_t rows, const size_t cols) {
+  for (size_t i = 0; i < rows; i++) {
+    for (size_t j = 0; j < cols; j++) {
+      printf("%0.1f ", A[i][j]);
+    }
+    printf("\n");
+  }
+}
+
+/**
  * @brief Allocates a matrix.
  * @param rows The number of rows.
  * @param cols The number of columns.
@@ -69,6 +84,23 @@ float **allocate_matrix(const size_t rows, const size_t cols) {
 
   for (size_t i = 0; i < rows; i++) {
     M[i] = (float *)malloc(sizeof(float) * cols);
+  }
+
+  return M;
+}
+
+/**
+ * @brief Allocates a matrix filled with zeros.
+ * @param rows The number of rows.
+ * @param cols The number of columns.
+ * 
+ * This function allocates a matrix filled with zeros in the heap calling `calloc`.
+ */
+float **allocate_zero_matrix(const size_t rows, const size_t cols) {
+  float **M = (float **)calloc(rows, sizeof(float *));
+
+  for (size_t i = 0; i < rows; i++) {
+    M[i] = (float *)calloc(cols, sizeof(float));
   }
 
   return M;
