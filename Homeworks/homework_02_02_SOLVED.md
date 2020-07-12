@@ -5,7 +5,7 @@
 - *By modifying the code written during the last lessons, provide an array-based implementation of binary heaps which avoids to swap the elements in the array $\texttt{A}$.*
   *(**Hint**: use two arrays, $\texttt{key_pos}$ and $\texttt{rev_pos}$, of natural numbers reporting the position of the key of a node and the node corresponding to a given position, respectively)*
 
-  The solution can be found in the branch `no_swap` of this repository, in the folder [Binary_heaps](../Binary_heaps).
+  The solution can be found in the folder [Binary_heaps_noswap](../Binary_heaps_noswap).
   
 - *Consider the next algorithm:*
 
