@@ -4,11 +4,11 @@
 
 - *By using the code at:*
 
-  ​                                         https://github.com/albertocasagrande/AD_sorting
+  <p align=center><i><a href="https://github.com/albertocasagrande/AD_sorting">https://github.com/albertocasagrande/AD_sorting</a></i></p>
 
   *implement Insertion Sort, Quick Sort, Bubble Sort, Selection Sort, and Heap Sort.*
 
-  The solution with the implemented cod can be found in the files `insertion_sort.c`, `quick_sort.c`, `bubble_sort.c`, `selection_sort.c`, `heap_sort.c` in the folder [Sorting](../Sorting).
+  The solution with the implemented code can be found in the files `insertion_sort.c`, `quick_sort.c`, `bubble_sort.c`, `selection_sort.c`, `heap_sort.c` in the folder [Sorting](../Sorting).
 
 - *For each of the implemented algorithm, draw a curve to represent the relation between the input size and the execution-time.*
 

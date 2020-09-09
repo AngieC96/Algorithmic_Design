@@ -12,7 +12,7 @@
 
 - *Test the implementation on a set of instances of the problem and evaluate the execution time.*
 
-  After running the program [`test_delet_min`](../Binary_heaps/tests/test_delete_min.c), contained in the folder [Binary_heaps/tests](../Binary_heaps/tests) the following output was generated:
+  After running the program [`test_delet_min`](../Binary_heaps/tests/test_delete_min.c), contained in the folder [Binary_heaps/tests](../Binary_heaps/tests), the following output was generated:
 
   ```bash
   $ ./test_delete_min

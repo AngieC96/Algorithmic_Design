@@ -4,7 +4,7 @@
 
 *Clone the Strassen’s project template from*
 
-​										https://github.com/albertocasagrande/AD_strassen_template
+<p align=center> <i><a href="https://github.com/albertocasagrande/AD_strassen_template">https://github.com/albertocasagrande/AD_strassen_template</a></i></p>
 
 *and solve the following exercises.*
 
@@ -28,4 +28,4 @@
    
    <img src="figs/strassen_vs_best.png" alt="strassen_vs_best" style="zoom:50%;" />
 
-Moreover, we can see that the Strassen's algorithm which uses only $6$ matrices instead of $17$ is also faster,beside being more memory efficient.
+Moreover, we can see that the Strassen's algorithm which uses only $6$ matrices instead of $17$ is also faster, beside being more memory efficient.
