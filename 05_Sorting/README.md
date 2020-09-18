@@ -17,7 +17,7 @@ You have to use the [`binheap` library](Binary_heaps) to compile heap sort, and 
 cmake -G "Unix Makefiles" -DBINHEAP_PATH=<BINHEAP_INSTALL_DIR> CMakeLists.txt
 ```
 
-See [here](../Binary_heaps/README.md) to have more details about `<BINHEAP_INSTALL_DIR>`.
+I've chosen the folder `~/Documenti/'Algorithmic Design'/Algorithmic_Design/03_Binary_heaps`. See [here](../Binary_heaps/README.md) to have more details about `<BINHEAP_INSTALL_DIR>`.
 
 Afterwards you can compile the code by executing `make`. This produces an executable named `test_sorting` which can be executed in POSIX systems by using the command:
 
