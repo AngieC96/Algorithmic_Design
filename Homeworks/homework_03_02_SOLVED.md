@@ -33,8 +33,9 @@
           for h in l..p:
               swap (A, h, j)          # place the pivots between S and G
               j ← j - 1
+              h ← h + 1
           endfor
-          return j
+          return j, i-1
       enddef
       ```
 
@@ -50,6 +51,7 @@
 2. *Download the latest version of the code from*
       <p align=center> <i><a href="https://github.com/albertocasagrande/AD_sorting">https://github.com/albertocasagrande/AD_sorting</i></a></i></p>
       
+
 *and*
       
       - *Implement the $\texttt{SELECT}$ algorithm of Ex. [1](#point1).*
@@ -59,7 +61,7 @@
       The solution with the implemented code are the functions `select_index` and `quick_sort_select` that can be found in the file `select.c` in the folder [Sorting](../Sorting).
       
       The following graph ==....==
-      
+
 3. *(Ex. 9.3-1 in [[1]](#ref1)) In the algorithm $\texttt{SELECT}$, the input elements are divided into chunks of $5$. Will the algorithm work in linear time if they are divided into chunks of $7$? What about chunks of $3$?*
 
    If the input elements are divided into chunks of $7$ we have that there will be $\left\lceil \frac n7 \right\rceil$ chunks, there will be $\left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil$ $m_i$ (median of the chunk $C_i$) greater or equal to $m$ (the median of the $m_i$'s), there will be $\left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil - 2$ chunks that have at least $3$ elements greater then $m$, there will be at least $4 \left( \left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil - 2\right) \ge \frac2{7}n - 8$ elements that are greater than $m$. So an upper bound for the number of elements smaller or equal to $m$ is $n - \left( \frac27 n - 8 \right) = \frac57 n + 8$.

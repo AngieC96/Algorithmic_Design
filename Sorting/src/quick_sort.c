@@ -33,7 +33,7 @@ int partition(void *A, const int l, const int r, const int p,
     // swap(A + l * elem_size, A + p * elem_size, elem_size); // I already pass the first element
     unsigned int i = l + 1, j = r;
     while (i <= j){
-        if (!leq(A + i * elem_size, A + l * elem_size)){
+        if (!leq(A + i * elem_size, A + p * elem_size)){
             swap(A + i * elem_size, A + j * elem_size, elem_size);
             --j;
         } else {

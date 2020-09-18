@@ -4,6 +4,8 @@
 #include <stdlib.h>
 
 #include "total_order.h"
+#include "swap.h"
+#include "quick_sort.h"
 
 /**********************************************************************
  * An implementation for the Select algorithm.
@@ -22,10 +24,17 @@
  * @param elem_size is the type size in bytes of the elements in A.
  * @param leq is the total order to be satisfied by the sorting.
  **********************************************************************/
-unsigned int select_index(void *A, const unsigned int n, 
+unsigned int select_index(void *A, const int l, const int r,
                           const unsigned int i,
                           const size_t elem_size, 
                           total_order leq);
+
+unsigned int select_pivot(void *A, const int l, const int r,
+                          const size_t elem_size, 
+                          total_order leq);
+
+int* select_partition(void *A, const int l, const int r, const int p, 
+                const size_t elem_size, total_order leq);
 
 /**********************************************************************
  * An implementation for the Quick Sort algorithm.
@@ -49,5 +58,8 @@ unsigned int select_index(void *A, const unsigned int n,
 void quick_sort_select(void *A, const unsigned int n, 
                        const size_t elem_size, 
                        total_order leq);
+
+void quick_sort_select_aux(void *A, const int l, const int r, 
+                const size_t elem_size, total_order leq);
 
 #endif // __SELECT__
