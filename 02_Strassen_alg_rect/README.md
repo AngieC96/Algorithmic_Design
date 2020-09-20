@@ -1,4 +1,4 @@
-# Strassen's Algorithm
+# Strassen's Algorithm rectangular matrices
 
 This folder contains some code to simplify the implementation and the testing of the Strassen's algorithm for rectangular matrix multiplication.
 
@@ -20,28 +20,17 @@ Afterwards you can compile the code by executing `make`. This produces an execut
 
 ```bash
 ./strassen_test.x
-
-    n	Naive Alg.	Strassen's Alg.	Str. Alg. best	Same result
-    1	0.000001	0.000020	0.000001	1 1
-    2	0.000000	0.000000	0.000000	1 1
-    4	0.000001	0.000000	0.000000	1 1
-    8	0.000009	0.000001	0.000001	1 1
-   16	0.000005	0.000004	0.000004	1 1
-   32	0.000032	0.000034	0.000028	1 1
-   64	0.000250	0.000244	0.000234	1 1
-  128	0.001934	0.001884	0.001853	1 1
-  256	0.100109	0.013079	0.012471	1 1
-  512	0.905262	0.089764	0.086891	1 1
- 1024	8.541473	0.627640	0.612996	1 1
- 2048	66.494477	4.420142	4.326053	1 1
- 4096	185.323830	31.036216	30.434407	1 1
+Beginning
+Allocated matrices
+       dim	Naive Alg.	Strassen's Alg.	Str. Alg. best	Same result
+   1x   1x   1	0.000002	0.000006	0.000003	1 1
+   3x   5x   7	0.000002	0.000005	0.000018	1 1
+   9x  25x  49	0.000033	0.000555	0.000544	1 1
+  27x 125x 343	0.012168	0.137508	0.131498	1 1
+  81x 625x2401	1.749203	47.157107	44.011950	1 1
 ```
 
-The first column in the output, `n`, report the number of the rows and columns in the tested matrices.
-
-The second and third columns in the output, `Naive Alg.` and `Strassen's Alg.`, reports the execution-time in seconds of the implementations of the naive algorithm and of the Strassen's algorithm, respectively. The fourth column, `Str. Alg. best`, reports the execution-time of the Strassen's algorithm with reduced memory allocations.
-
-Finally, the last column, `Same result`, which is exclusively meant to validate the implementations, contains the value 1 in the first column if and only if the result of the naive algorithm and that of the Strassen's algorithm are the same, and the value 1 in the second column if and only if the result of the naive algorithm and that of the Strassen's algorithm with reduced memory allocations are the same.
+Description output.
 
 ### Build the documentation
 
