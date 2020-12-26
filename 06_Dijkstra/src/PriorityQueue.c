@@ -1,5 +1,11 @@
 #include <PriorityQueue.h>
 
+PriorityQueue* build_queue(size_t elem_size)
+{
+    PriorityQueue* Q = (PriorityQueue*) malloc(sizeof(PriorityQueue));
+    Q->head = NULL;
+    Q->elem_size = elem_size;
+}
 
 int is_queue_empty(const PriorityQueue *Q)
 {

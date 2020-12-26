@@ -38,6 +38,17 @@ typedef struct {
     size_t elem_size;
 } PriorityQueue;
 
+
+/**********************************************************************
+ * Builds a priority queue.
+ *
+ * This function creates an empty priority queue.
+ *
+ * @param elem_size is the size of the type that the queue will contain.
+ * @return the priority queue just created.
+ **********************************************************************/
+PriorityQueue* build_queue(size_t elem_size);
+
 /**********************************************************************
  * Test whether the priority queue is empty.
  *
@@ -46,8 +57,8 @@ typedef struct {
  * The asymptotic time-complexity of this function is Theta(1).
  *
  * @param Q is the queue whose emptyness has to be tested.
- * @return if Q is not empty, the function returns 0; a number different 
- *         from 0, otherwise.
+ * @return the function returns 0 if Q is not empty; a number different 
+ *         from 0 otherwise.
  **********************************************************************/
 int is_queue_empty(const PriorityQueue *Q);
 

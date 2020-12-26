@@ -33,14 +33,14 @@ unsigned int select_pivot(void *A, const int l, const int r,
     }
     
     int chunks = (r - l) / 5;
-    for(size_t c = 0; c < chunks - 1; ++c){
-        int cl = c * 5;
-        int cr = 5 + c * 5;
+    for(size_t c = 0; c < chunks; ++c){
+        int cl = l + c * 5;
+        int cr = cl + 4;
         quick_sort_aux(A, cl, cr, elem_size, leq);
         swap(A + (cl + 2) * elem_size, A + (l + c) * elem_size, elem_size);
     }
 
-    return select_index(A, l, l + chunks - 1, chunks/2, elem_size, leq);
+    return select_index(A, l, l + chunks - 1, l + chunks/2, elem_size, leq);
 }
 
 int* select_partition(void *A, const int l, const int r, const int p, 
@@ -87,7 +87,7 @@ void quick_sort_select_aux(void *A, const int l, const int r,
     int p; int* k;
 
     if (l < r){
-        p = select_index(A, l, r, (l+r)/2, elem_size, leq);
+        p = select_index(A, l, r, (l + r)/2, elem_size, leq);
         k = select_partition(A, l, r, p, elem_size, leq);
         quick_sort_select_aux(A, l, k[0] - 1, elem_size, leq);
         quick_sort_select_aux(A, k[1] + 1, r, elem_size, leq);

@@ -29,9 +29,9 @@ typedef struct ListNode{
  *  This class is meant to represent a list.
  */
 typedef struct {
-    /** @brief This is the first node of the list. */
+    /** @brief The first node of the list. */
     ListNode* head;
-    /** @brief It is the type size in bytes of the elements in the list. */
+    /** @brief The type size in bytes of the elements in the list. */
     size_t elem_size;
 } List;
 
@@ -41,7 +41,7 @@ typedef struct {
  * This function returns the tail of the list by following all the 
  * pointers of the list nodes.
  *
- * @param l is the list from which the tail should be returned.
+ * @param l the list from which the tail should be returned.
  * @return a pointer to the tail of the list.
  **********************************************************************/
 ListNode* tail(List* l);
@@ -51,7 +51,7 @@ ListNode* tail(List* l);
  *
  * This function inserts an element at the end of the list.
  *
- * @param l is the list.
+ * @param l the list.
  * @param value the value to be inserted in the list.
  * @return a pointer to the new node of the list.
  **********************************************************************/
@@ -65,10 +65,19 @@ const ListNode* push_back(List* l, const void* value);
  * current node data. Note that different data types need different
  * specifier in printf().
  *
- * @param l is the list to be printed.
+ * @param l the list to be printed.
  * @param key_printer used to access the function to be used for printing 
  * current node data
  **********************************************************************/
 void printList(const List* l, void (*key_printer)(const void *value));
+
+/**********************************************************************
+ * Destructs a list.
+ *
+ * This function destructs a list.
+ * 
+ * @param l the list to be destructed.
+ **********************************************************************/
+void Ldestructor(List* l);
 
 #endif // __LIST__
