@@ -1,36 +1,31 @@
-// #include <Graph.h>
+#include <Graph.h>
 
-// #define INFTY 99999999
 
-// init_sssp(Graph G)
-// {
-//     for (v in G.V){
-//         v.d = ULONG_MAX;  // = INFTY;
-//         v.pred = NULL;
-//     }
-// }
+Graph* createAdjacencyList()
+{
+    FILE *fp = fopen("data/input.txt", "r");
+    if(fp == NULL) {
+      printf("Error reading file!\n");
+      exit(1);
+    }
+    int N, M, S, a, b;
+    // Otherwise, to delete N and M from the file: count the number of different numbers and then do while(fscanf)
+    fscanf(fp, "%d %d %d", &N, &M, &S);
+    Graph g;
+    g.adjacencyList = (ListNode*) malloc(N * sizeof(ListNode**)); // array of size N listing the nodes
+    /*
+    for(int i = 0; i < N; ++i) {
+        g.adjacencyList[i] = NULL;
+    }
+    for(int i = 0; i < M; ++i) {
+      fscanf(fp, "%d %d", &a, &b);
+      push_back_void(g.adjacencyList[a], &b);
+    }
+    printf("Printing list:\n");
+    printList(g.adjacencyList[0], int_t);
 
-// relax(Q, v, u, w)
-// {
-//     if(u.d + w < v.d){
-//         decrease_key(Q, v, u.d + w);
-//     }
-// }
+*/
+    fclose(fp);
+}
 
-// dijkstra(G, s)
-// {
-//     init_sssp(G, s);
-//     s.d = 0;
-    
-//     PriorityQueue *Q = build_queue(sizeof(Node));
-//     Q <- G.V;  // All the nodes are in Q at the beginning of the computation
-//     while (!is_queue_empty(Q))  // One node u is extracted at each iteration
-//     {
-//         u = extract_min(Q);
-//         for (v, w) in G.Adj(u){  // iterates on the adjacency list of u
-//             relax(Q, u, v, w);
-//         }
-//     }
-    
-
-// }
+//void printGraph()

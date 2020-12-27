@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include "List.h"
-#include "PriorityQueue.h"
+#include "Graph.h"
 #include "utilities.h"
 
 #define int_t(i) *((const int *)i)
@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[])
 {
-    ListNode *list = NULL;
+    /* ListNode* list = NULL;
     printf("Void list: %p\n", list);
     // Create and print an int linked list
     int arr[] = {10, 20, 30, 40, 50};
@@ -35,7 +35,23 @@ int main(int argc, char *argv[])
 
     Ldestructor(&list);
     Ldestructor(&list2);
-    printf("Destroyed list: %p\n", list);
+    printf("Destroyed list: %p\n", list); */
+
+    printf("Grafo\n");
+    Graph g;
+    g.adjacencyList = NULL;
+    int a = 10, b=20;
+    push_back_void(&g.adjacencyList, &a);
+    push_back_void(&g.adjacencyList, &b);
+    printf("Value in head: %d\n", int_t(g.adjacencyList->T));
+    printf("Value in head+1: %d\n", int_t(g.adjacencyList->next->T));
+    printList(g.adjacencyList, int_printer);
+
+    ListNode** adjacencyList = (ListNode*) malloc(10 * sizeof(ListNode*));
+    adjacencyList[0] = NULL;
+    printList(adjacencyList[0], int_printer);
+    push_back_void(&adjacencyList[0], &a);
+    printList(adjacencyList[0], int_printer);
 
 
     return 0;

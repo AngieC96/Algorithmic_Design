@@ -51,9 +51,9 @@ void push_back_void(ListNode** head, const void* value);
  * Prints the list.
  *
  * This function prints all the nodes contained in the list.
- * key_printer is used to access the function to be used for printing
- * current node data. Note that different data types need different
- * specifier in printf().
+ * The function key_printer is used to access the function to be used
+ * for printing current node data @ref T. Note that different data types
+ * need different specifier in printf().
  *
  * @param l the list to be printed.
  * @param key_printer used to access the function to be used for printing 

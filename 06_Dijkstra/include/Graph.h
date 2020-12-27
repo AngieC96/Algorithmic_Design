@@ -4,14 +4,15 @@
 /**
  * @file
  *
- * It will contain the Graph-related code
+ * It will contain the Graph-related code.
+ * 
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 #include <limits.h>  // for ULONG_MAX
 
 #include "List.h"
-#include "PriorityQueue.h"
 #include "Node.h"
 
 
@@ -21,7 +22,9 @@
  *  This class is meant to represent a graph.
  */
 typedef struct {
-    List adjacencyl;
+    ListNode* adjacencyList;
 } Graph;
+
+Graph createGraph();
 
 #endif // __GRAPH__
