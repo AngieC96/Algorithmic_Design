@@ -23,18 +23,6 @@ typedef struct ListNode{
     struct ListNode* next;
 } ListNode;
 
-/** @struct List
- *  @brief A class to represent a list.
- *
- *  This class is meant to represent a list.
- */
-typedef struct {
-    /** @brief The first node of the list. */
-    ListNode* head;
-    /** @brief The type size in bytes of the elements in the list. */
-    size_t elem_size;
-} List;
-
 /**********************************************************************
  * Returns the tail of the list.
  *
@@ -44,7 +32,7 @@ typedef struct {
  * @param l the list from which the tail should be returned.
  * @return a pointer to the tail of the list.
  **********************************************************************/
-ListNode* tail(List* l);
+ListNode* tail(ListNode* l);
 
 /**********************************************************************
  * Inserts an element at the end of the list.
@@ -55,7 +43,7 @@ ListNode* tail(List* l);
  * @param value the value to be inserted in the list.
  * @return a pointer to the new node of the list.
  **********************************************************************/
-const ListNode* push_back(List* l, const void* value);
+ListNode* push_back(ListNode* l, const void* value);
 
 /**********************************************************************
  * Prints the list.
@@ -69,7 +57,7 @@ const ListNode* push_back(List* l, const void* value);
  * @param key_printer used to access the function to be used for printing 
  * current node data
  **********************************************************************/
-void printList(const List* l, void (*key_printer)(const void *value));
+void printList(const ListNode* l, void (*key_printer)(const void *value));
 
 /**********************************************************************
  * Destructs a list.
@@ -78,6 +66,6 @@ void printList(const List* l, void (*key_printer)(const void *value));
  * 
  * @param l the list to be destructed.
  **********************************************************************/
-void Ldestructor(List* l);
+void Ldestructor(ListNode* l);
 
 #endif // __LIST__

@@ -1,64 +1,61 @@
 #include "List.h"
 
-ListNode* tail(List* l)
+ListNode* tail(ListNode* head)
 {
-  ListNode* tmp = l->head;
-  while (tmp && tmp->next)
-    tmp = tmp->next;
+  while (head && head->next)
+    head = head->next;
 
-  return tmp;
+  return head;
 }
 
-const ListNode* push_back(List* l, const void* value)
+ListNode* push_back(ListNode* head, const void* value)
 {
   // Allocate memory for the new node
   ListNode* newNode = (ListNode*) malloc(sizeof(ListNode));
-  newNode->T = malloc(l->elem_size);
+  //newNode->T = malloc(sizeof(value));
+  newNode->T = value; //malloc(sizeof(int));
   newNode->next = NULL; // not granted that a newly created pointer is NULL
   // Copy contents of new_data to newly allocated memory. 
   // Assumption: char takes 1 byte. 
-  int i; 
-  for (i=0; i<l->elem_size; i++)
-    *(char *)(newNode->T + i) = *(char *)(value + i);
+  //for (int i = 0; i < sizeof(value); i++)
+  //  *(char *)(newNode->T + i) = *(char *)(value + i);
   // Change tail pointer as new node is added at the end
   // We have to check if we have a NULL head (the list is empty), because in this case we have head = tail = newNode.
-  if (l->head == NULL) {
-    l->head = newNode;
-  } else {
-    printf("\nIn push_back\nFirst node (head): %p, value %d\n", l->head, (const int *)l->head->T);
-    printf("Second node: %p\n", l->head->next);
-    printf("Third node: %p\n", l->head->next);
-    tail(l)->next = newNode;
+  if (head == NULL) {
+    return newNode;
   }
-
-  return newNode;
+  tail(head)->next = newNode;
+  return head;
 }
 
-void printList(const List* l, void (*key_printer)(const void *value))
+void printList(const ListNode* head, void (*key_printer)(const void *value))
 {
   printf("Content of the list: ");
-  ListNode* tmp = l->head;
-  while (tmp && tmp->next){
-    if (tmp == l->head) key_printer(tmp->T);
-    tmp = tmp->next;
+  ListNode* tmp = head;
+  while (tmp){
     key_printer(tmp->T);
+    tmp = tmp->next;
   }
   printf("\n");
 
   return;
 }
 
-void Ldestructor(List* l)
-{
-  printf("\nIn Ldestructor\n");
-  ListNode* headL = l->head;
-  printf("head: %p\n", headL);
-  while(headL){
-    free(headL->T);
-    headL = headL->next;
-    printf("head: %p\n", headL);
-  }
+//remove_back()
+//{}
 
-  printf("free l\n");
-  free(l);
+void Ldestructor(ListNode* head)
+{
+  // printf("\nIn Ldestructor\n");
+  // ListNode* headL = head;
+  // printf("head: %p\n", headL);
+  // while(headL){
+  //   free(headL->T);
+  //   headL = headL->next;
+  //   free(headL);
+  //   printf("head: %p\n", headL);
+  // }
+
+  // printf("free l\n");
+  // free(head);
 }
