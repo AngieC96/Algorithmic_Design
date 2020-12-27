@@ -45,6 +45,8 @@ ListNode* tail(ListNode* l);
  **********************************************************************/
 ListNode* push_back(ListNode* l, const void* value);
 
+void push_back_void(ListNode** head, const void* value);
+
 /**********************************************************************
  * Prints the list.
  *
@@ -66,6 +68,6 @@ void printList(const ListNode* l, void (*key_printer)(const void *value));
  * 
  * @param l the list to be destructed.
  **********************************************************************/
-void Ldestructor(ListNode* l);
+void Ldestructor(ListNode** l);
 
 #endif // __LIST__
