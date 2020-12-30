@@ -41,17 +41,24 @@ int main(int argc, char *argv[])
     Graph g;
     g.adjacencyList = NULL;
     int a = 10, b=20;
-    push_back_void(&g.adjacencyList, &a);
-    push_back_void(&g.adjacencyList, &b);
-    printf("Value in head: %d\n", int_t(g.adjacencyList->T));
-    printf("Value in head+1: %d\n", int_t(g.adjacencyList->next->T));
-    printList(g.adjacencyList, int_printer);
+    // push_back_void(&g.adjacencyList, &a);
+    // push_back_void(&g.adjacencyList, &b);
+    // printf("Value in head: %d\n", int_t(g.adjacencyList->T));
+    // printf("Value in head+1: %d\n", int_t(g.adjacencyList->next->T));
+    // printList(g.adjacencyList, int_printer);
 
-    ListNode** adjacencyList = (ListNode*) malloc(10 * sizeof(ListNode*));
+    ListNode** adjacencyList = (ListNode**) malloc(10 * sizeof(ListNode*));
     adjacencyList[0] = NULL;
     printList(adjacencyList[0], int_printer);
     push_back_void(&adjacencyList[0], &a);
     printList(adjacencyList[0], int_printer);
+
+    createAdjacencyList(&g);
+    printf("Nodes: %d,\tEdges: %d,\tSource: %d\n", g.N, g.M, g.S);
+    printf("Printing list:\n");
+    for(int i = 0; i < 5; ++i) {
+      printList(g.adjacencyList[i], int_printer);
+    }
 
 
     return 0;

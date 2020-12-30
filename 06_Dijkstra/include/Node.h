@@ -24,7 +24,6 @@ typedef struct {
     int d;
     /** @brief The predecessor of this Node in the shortest path from the source s. */
     struct Node* pred;
-
 } Node;
 
 

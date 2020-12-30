@@ -22,8 +22,16 @@
  *  This class is meant to represent a graph.
  */
 typedef struct {
-    ListNode* adjacencyList;
+    /** @brief The number of nodes. */
+    int N;
+    /** @brief The number of edges. */
+    int M;
+    /** @brief The source of the graph. */
+    int S;
+    ListNode** adjacencyList;
 } Graph;
+
+void createAdjacencyList(Graph* g);
 
 Graph createGraph();
 
