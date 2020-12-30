@@ -14,6 +14,7 @@
 
 #include "List.h"
 #include "Node.h"
+#include "utilities.h"
 
 
 /** @struct Graph
@@ -34,5 +35,7 @@ typedef struct {
 void createAdjacencyList(Graph* g);
 
 Graph createGraph();
+
+void printGraph(Graph* g);
 
 #endif // __GRAPH__

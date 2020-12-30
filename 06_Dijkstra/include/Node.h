@@ -8,6 +8,7 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
 
 /** @struct Node
  *  @brief A class to represent a node.
@@ -18,7 +19,7 @@ typedef struct {
     /** @brief The keys are the identifyer of the Node. */
     int key;
     /** @brief The content of the Node. */
-    int value;
+    //int value;
     //void* value;
     /** @brief The distance from the source s. */
     int d;

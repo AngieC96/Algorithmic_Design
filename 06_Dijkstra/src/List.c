@@ -49,7 +49,7 @@ void push_back_void(ListNode** head, const void* value)
 
 void printList(const ListNode* head, void (*key_printer)(const void *value))
 {
-  printf("Content of the list: ");
+  //printf("Content of the list: ");
   ListNode* tmp = (ListNode*) head;
   while (tmp){
     key_printer(tmp->T);
