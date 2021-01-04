@@ -16,6 +16,10 @@
 #include "Graph.h"
 
 
+void init_sssp(Graph* G);
 
+void relax(Q, v, u, w);
+
+void dijkstra(Graph* G, int s);
 
 #endif // __DIJKSTRA__
