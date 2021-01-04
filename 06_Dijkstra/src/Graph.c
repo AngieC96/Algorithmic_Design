@@ -28,6 +28,10 @@ void createAdjacencyList(Graph* g)
       Pair p = {inNode, weigth};
       push_back_void(&g->adjacencyList[outNode], &p);
     }
+    g->V = (Node*) malloc(g->N * sizeof(Node));
+    for(int i = 0; i < g->N; ++i) {
+      g->V[i].key = i;
+    }
 
     fclose(fp);
 }

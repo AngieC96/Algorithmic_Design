@@ -56,6 +56,7 @@ int main(int argc, char *argv[])
     createAdjacencyList(&g);
     printf("Nodes: %d,\tEdges: %d,\tSource: %d\n", g.N, g.M, g.S);
     printGraph(&g);
+    printf("Content of node %d: %p\n", g.V[3].key, g.V[3].value);
 
 
     return 0;

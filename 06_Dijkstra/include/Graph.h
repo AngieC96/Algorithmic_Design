@@ -43,7 +43,10 @@ typedef struct {
     int M;
     /** @brief The source of the graph. */
     int S;
+    /** @brief The adjacency list of the graph. */
     ListNode** adjacencyList;
+    /** @brief The set (vector) of edges of the graph. */
+    Node* V;
 } Graph;
 
 void createAdjacencyList(Graph* g);
