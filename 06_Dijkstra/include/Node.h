@@ -19,8 +19,7 @@ typedef struct {
     /** @brief The keys are the identifyer of the Node. */
     int key;
     /** @brief The content of the Node. */
-    //int value;
-    //void* value;
+    void* value;
     /** @brief The distance from the source s. */
     int d;
     /** @brief The predecessor of this Node in the shortest path from the source s. */

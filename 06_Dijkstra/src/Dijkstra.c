@@ -2,13 +2,7 @@
 
 // #define INFTY 99999999
 
-// init_sssp(Graph G)
-// {
-//     for (v in G.V){
-//         v.d = ULONG_MAX;  // = INFTY;
-//         v.pred = NULL;
-//     }
-// }
+z
 
 // relax(Q, v, u, w)
 // {
