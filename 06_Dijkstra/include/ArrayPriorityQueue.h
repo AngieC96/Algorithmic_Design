@@ -4,32 +4,34 @@
 /**
  * @file
  *
- * It will contain the array-based Min Priority Queue related code
+ * It will contain the array-based Min Priority Queue related code.
  */
 
 #include <stdlib.h>
 
-#include "List.h"
+#include "Node.h"
+#include "Graph.h"
 #include "utilities.h"
 
 
 typedef struct {
     /** @brief Array containing the values. */
-    int* array;
+    Node** array;
     /** @brief Number of elements in the array. */
-    int n;
+    int num_of_elem;
+    int dim_queue;
 } ArrayPriorityQueue;
 
 
 /**********************************************************************
- * Builds a priority queue.
+ * Builds an array-based priority queue.
  *
  * This function creates an empty priority queue.
  *
  * @param elem_size is the size of the type that the queue will contain.
  * @return the priority queue just created.
  **********************************************************************/
-PriorityQueue* build_queue(size_t elem_size);
+ArrayPriorityQueue* build_arrayQueue(Graph* G);
 
 /**********************************************************************
  * Test whether the priority queue is empty.
@@ -42,7 +44,7 @@ PriorityQueue* build_queue(size_t elem_size);
  * @return the function returns 0 if Q is not empty; a number different 
  *         from 0 otherwise.
  **********************************************************************/
-int is_queue_empty(const PriorityQueue *Q);
+int is_arrayQueue_empty(const ArrayPriorityQueue *Q);
 
 /**********************************************************************
  * Retruns the minimum from the heap. !!!!!!!!!!!!!!!!!!!!!!!!
@@ -55,7 +57,7 @@ int is_queue_empty(const PriorityQueue *Q);
  * @return the minimum in the heap, if H is not empty; 
  *         NULL otherwise.????
  **********************************************************************/
-const void* minimum(PriorityQueue *Q);
+int minimum_arrayQueue(ArrayPriorityQueue *Q);
 
 /**********************************************************************
  * Extract the minimum from the heap and return a pointer to it. !!!!!!!!!!!!!!!!!!!!!!!!
@@ -69,7 +71,7 @@ const void* minimum(PriorityQueue *Q);
  * @return a pointer to the minimum in the heap, if H is not empty; 
  *         NULL otherwise.
  **********************************************************************/
-const QueueNode* extract_min(PriorityQueue *Q);
+Node* extract_min_arrrayQueue(ArrayPriorityQueue *Q);
 
 /**********************************************************************
  * Decrease the value of node's key.  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -88,7 +90,7 @@ const QueueNode* extract_min(PriorityQueue *Q);
  *         either the new value is greater than of equal to the old key
  *         value or the node does not belong to the H, NULL is returned.
  **********************************************************************/
-const QueueNode* decrease_key(PriorityQueue* Q, QueueNode* node, const size_t value);
+const Node* decrease_key_arrrayQueue(ArrayPriorityQueue* Q, Node* node, const int value);
 
 /**********************************************************************
  * Insert a value in the heap.   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -106,7 +108,7 @@ const QueueNode* decrease_key(PriorityQueue* Q, QueueNode* node, const size_t va
  *         either the new value is greater than of equal to the old key
  *         value or the node does not belong to the H, NULL is returned.
  **********************************************************************/
-const void *insert_value(PriorityQueue* Q, const void* value, size_t priority);
+void insert_value_arrrayQueue(ArrayPriorityQueue* Q, Node* n);
 
 /**********************************************************************
  * Print a representation of the heap on the standard output.
@@ -119,6 +121,6 @@ const void *insert_value(PriorityQueue* Q, const void* value, size_t priority);
  * @param H is the heap in which the key value should be decreased.
  * @param key_printer is a function to print a key value.
  **********************************************************************/
-void print_pqueue(const PriorityQueue* Q, void (*key_printer)(const void *value));
+void printQueue(const ArrayPriorityQueue* Q, void (*key_printer)(const void *value));
 
 #endif // __APQUEUE__

@@ -18,10 +18,10 @@
 typedef struct {
     /** @brief The keys are the identifyer of the Node. */
     int key;
-    /** @brief The content of the Node. */
+    /** @brief The content of the Node (satellite data). */
     void* value;
     /** @brief The distance from the source s. */
-    int d;
+    unsigned long int d;
     /** @brief The predecessor of this Node in the shortest path from the source s. */
     struct Node* pred;
 } Node;

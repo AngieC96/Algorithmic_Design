@@ -49,9 +49,9 @@ typedef struct {
     Node* V;
 } Graph;
 
-void createAdjacencyList(Graph* g);
+Graph* createGraph();
 
-Graph createGraph();
+void createAdjacencyList(Graph* g);
 
 void printGraph(Graph* g);
 

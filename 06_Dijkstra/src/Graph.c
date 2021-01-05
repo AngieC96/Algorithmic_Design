@@ -7,33 +7,38 @@ void printPair(Pair* p)
   printf("(%d, %d) ", p->a, p->b);
 }
 
+Graph* createGraph()
+{
+  // FAREEEEEEEEEEEEEeee
+}
+
 void createAdjacencyList(Graph* g)
 {
-    FILE *fp = fopen("data/input.txt", "r");
-    if(fp == NULL) {
-      printf("Error reading file!\n");
-      exit(1);
-    }
+  FILE *fp = fopen("data/input.txt", "r");
+  if(fp == NULL) {
+    printf("Error reading file!\n");
+    exit(1);
+  }
 
-    int outNode, inNode, weigth;
-    // Otherwise, to delete N and M from the file: count the number of different numbers and then do while(fscanf)
-    fscanf(fp, "%d %d %d", &g->N, &g->M, &g->S);
+  int outNode, inNode, weigth;
+  // Otherwise, to delete N and M from the file: count the number of different numbers and then do while(fscanf)
+  fscanf(fp, "%d %d %d", &g->N, &g->M, &g->S);
 
-    g->adjacencyList = (ListNode**) malloc(g->N * sizeof(ListNode*)); // array of size N listing the nodes
-    for(int i = 0; i < g->N; ++i) {
-        g->adjacencyList[i] = NULL;
-    }
-    for(int i = 0; i < g->M; ++i) {
-      fscanf(fp, "%d %d %d", &outNode, &inNode, &weigth);
-      Pair p = {inNode, weigth};
-      push_back_void(&g->adjacencyList[outNode], &p);
-    }
-    g->V = (Node*) malloc(g->N * sizeof(Node));
-    for(int i = 0; i < g->N; ++i) {
-      g->V[i].key = i;
-    }
+  g->adjacencyList = (ListNode**) malloc(g->N * sizeof(ListNode*)); // array of size N listing the nodes
+  for(int i = 0; i < g->N; ++i) {
+    g->adjacencyList[i] = NULL;
+  }
+  for(int i = 0; i < g->M; ++i) {
+    fscanf(fp, "%d %d %d", &outNode, &inNode, &weigth);
+    Pair p = {inNode, weigth};
+    push_back_void(&g->adjacencyList[outNode], &p);
+  }
+  g->V = (Node*) malloc(g->N * sizeof(Node));
+  for(int i = 0; i < g->N; ++i) {
+    g->V[i].key = i;
+  }
 
-    fclose(fp);
+  fclose(fp);
 }
 
 void printGraph(Graph* g)

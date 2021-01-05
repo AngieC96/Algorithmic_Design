@@ -1,7 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
 
 #include "List.h"
+#include "Node.h"
 #include "Graph.h"
+#include "ArrayPriorityQueue.h"
+#include "Dijkstra.h"
 #include "utilities.h"
 
 #define int_t(i) *((const int *)i)
@@ -57,6 +62,36 @@ int main(int argc, char *argv[])
     printf("Nodes: %d,\tEdges: %d,\tSource: %d\n", g.N, g.M, g.S);
     printGraph(&g);
     printf("Content of node %d: %p\n", g.V[3].key, g.V[3].value);
+
+    ArrayPriorityQueue* q = build_arrayQueue(&g);
+    printf("Nodes: %d,\tEdges: %d,\tSource: %d\n", g.N, g.M, g.S);
+    printf("Queue # elem: %d\n", q->num_of_elem);
+    printf("Queue content: ");
+    printQueue(q, printNode);
+    int mamma = INT_MAX;
+    printf("\nMAX: %d\n", mamma);
+    init_sssp(&g);
+    printf("Content of node.d %d: %ld\n", g.V[0].key, g.V[0].d);
+    printf("Min of queue: %d\n", minimum_arrayQueue(q));
+    printf("Graph distances: ");
+    for(int i = 0; i < g.N; ++i) {
+        g.V[i].d = i;
+        printf("%ld ", g.V[i].d);
+    }
+    printf("\n");
+    decrease_key_arrrayQueue(q, &g.V[4], 2);
+    printf("Queue content: ");
+    printQueue(q, printNode);
+    printf("Min of queue: %d\n", extract_min_arrrayQueue(q)->key);
+    printf("Queue # elem: %d\n", q->num_of_elem);
+    printf("Queue content: ");
+    printQueue(q, printNode);
+    insert_value_arrrayQueue(q, &g.V[0]);
+    printf("Queue content: ");
+    printQueue(q, printNode);
+    insert_value_arrrayQueue(q, &g.V[2]);
+    printf("Queue content: ");
+    printQueue(q, printNode);
 
 
     return 0;

@@ -11,6 +11,7 @@
  */
 
 #include <stdlib.h>
+#include <limits.h>
 
 #include "List.h"
 #include "Graph.h"
