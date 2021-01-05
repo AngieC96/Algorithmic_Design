@@ -12,31 +12,31 @@
 
       The pseudo-code is the following:
 
-      ```
+      ```pseudocode
       def SELECT_PARTITION(A, l, r, p):
           swap(A, l, p)
       	(p, i, j) ← (i, i + 1, r)
           while i <= j:
-              if A[i] > A[p]:         # if A[i] is greater than the pivot
-                  swap(A, i, j)       # place it in G
-                  j ← j - 1           # increase G's size
+              if A[i] > A[p]:         // if A[i] is greater than the pivot
+                  swap(A, i, j)       // place it in G
+                  j ← j - 1           // increase G's size
               else
-                  if A[i] = A[p]:     # if A[i] is equal to the pivot
-                      p ← p + 1       # increase P's size
-                      swap(A, i, p)   # place it in P
+                  if A[i] = A[p]:     // if A[i] is equal to the pivot
+                      p ← p + 1       // increase P's size
+                      swap(A, i, p)   // place it in P
           	        i ← i + 1
-                  else                # if A[i] is smaller than the pivot
-                      i ← i + 1       # A[i] is already in S
-                  endif
-              endif
-          endwhile
+                  else                // if A[i] is smaller than the pivot
+                      i ← i + 1       // A[i] is already in S
+                  end if
+              end if
+          end while
           for h in l..p:
-              swap (A, h, j)          # place the pivots between S and G
+              swap(A, h, j)          // place the pivots between S and G
               j ← j - 1
               h ← h + 1
-          endfor
+          end for
           return j, i-1
-      enddef
+      end def
       ```
 
       The complexity of this partition algorithm is still $\Theta(n)$, since the $\texttt{while}$ is repeated $n$ times and the $\texttt{for}$ is repeated in the worst case (when all the elements are equal to the pivot) $n$ times.
@@ -49,14 +49,14 @@
       so its complexity is still $O(n)$.
 
 2. *Download the latest version of the code from*
-      <p align=center> <i><a href="https://github.com/albertocasagrande/AD_sorting">https://github.com/albertocasagrande/AD_sorting</i></a></i></p>
       
-
-*and*
+      <p align=center> <i><a href="https://github.com/albertocasagrande/AD_sorting">https://github.com/albertocasagrande/AD_sorting</a></i></p>
       
-      - *Implement the $\texttt{SELECT}$ algorithm of Ex. [1](#point1).*
-      - *Implement a variant of the $\texttt{QUICK SORT}$ algorithm using above-mentioned $\texttt{SELECT}$ to identify the best pivot for partitioning.*
-      - *Draw a curve to represent the relation between the input size and the execution-time of the two variants of $\texttt{QUICK SORT}$ (i.e, those of Ex. 2 and Ex. 1 of [this file](#homework_03_01_SOLVED.md)) and discuss about their complexities.*
+      *and*
+      
+       - *Implement the $\texttt{SELECT}$ algorithm of Ex. [1](#point1).*
+        - *Implement a variant of the $\texttt{QUICK SORT}$ algorithm using above-mentioned $\texttt{SELECT}$ to identify the best pivot for partitioning.*
+        - *Draw a curve to represent the relation between the input size and the execution-time of the two variants of $\texttt{QUICK SORT}$ (i.e, those of Ex. 2 and Ex. 1 of [this file](#homework_03_01_SOLVED.md)) and discuss about their complexities.*
       
       The solution with the implemented code are the functions `select_index` and `quick_sort_select` that can be found in the file `select.c` in the folder [Sorting](../Sorting).
       
@@ -118,19 +118,19 @@
 
       The algorithm will find the median values using the "black-box" algorithm which is $O(n)$, then it will perform a call of the $\texttt{PARTITION}$ algorithm (or the $\texttt{SELECT_PARTITION}$ algorithm if we have repeated values) that is $O(n)$ in order to have the array partition with all the elements smaller than the median on the left, the median found by the "black-box" algorithm in the right place and all the elements greater than the median on the right. Then it will  perform a recursive step on only the sub-array containing $i$. The code is the following:
 
-      ```
+      ```pseudocode
       def BLACK_BOX_SELECT(A, i, l, r):
           m ← BLACK_BOX(A)
           if i = m:
               return A[m]
-          endif
+          end if
           PARTITION(A, l, r, m)
           if i < m
               BLACK_BOX_SELECT(A, i, l , m - 1)
           else
               BLACK_BOX_SELECT(A, i, m + 1, r)
-          endif
-      enddef
+          end if
+      end def
       ```
 
       The recurrent relation of the code is $T(n) = T(n/2) + O(n) + O(n) = T(n/2) + O(n)$, and using the recursion tree and choosing $cn$ as representative for $O(n)$ we have that
