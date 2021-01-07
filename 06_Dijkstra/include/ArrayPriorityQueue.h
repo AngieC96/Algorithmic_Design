@@ -74,25 +74,6 @@ int minimum_arrayQueue(ArrayPriorityQueue *Q);
 Node* extract_min_arrrayQueue(ArrayPriorityQueue *Q);
 
 /**********************************************************************
- * Decrease the value of node's key.  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
- *
- * This function decreases the value of a node's key and returns a 
- * pointer to the node in which the new value is stored. If either the 
- * new value is greater than of equal to the old key value or the node 
- * does not belong to the considered heap, the heap remains unchanged 
- * and NULL is returned. The asymptotic time-complexity of this 
- * function is O(log n).
- *
- * @param H is the heap in which the key value should be decreased.
- * @param node is a pointer to the node whose key should be decreased.
- * @param value is a pointer to the new value of the node's key.
- * @return a pointer to the node in which the new value is stored. If 
- *         either the new value is greater than of equal to the old key
- *         value or the node does not belong to the H, NULL is returned.
- **********************************************************************/
-const Node* decrease_key_arrrayQueue(ArrayPriorityQueue* Q, Node* node, const int value);
-
-/**********************************************************************
  * Insert a value in the heap.   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  *
  * This function creates a new node and inserts the passed value as the

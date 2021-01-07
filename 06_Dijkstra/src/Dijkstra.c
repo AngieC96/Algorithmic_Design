@@ -16,7 +16,7 @@ void relax(ArrayPriorityQueue*Q, Node* u, Node* v, int w)
     printf("Distance. u.d: %d, v.d: %d, u.d+w: %d\n", u->d, v->d, u->d+w);
     if(u->d + w < v->d){
         printf("v: %d\n", v->key);
-        Node* a = decrease_key_arrrayQueue(Q, v, u->d + w);
+        Node* a = decrease_dist(Q, v, u->d + w);
         printf("Decreased: %d, %d\n", a->key, a->d);
         v->pred = u;
     }

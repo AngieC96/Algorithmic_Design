@@ -48,14 +48,6 @@ Node* extract_min_arrrayQueue(ArrayPriorityQueue *Q)
     return node_min;
 }
 
-const Node* decrease_key_arrrayQueue(ArrayPriorityQueue* Q, Node* node, const int value)
-{
-    printf("In decrease, node: %d\n", node->key);
-    Q->array[node->key]->d = value;
-    printf("In decrease_key: %d\n", Q->array[node->key]->key);
-    return Q->array[node->key];
-}
-
 void insert_value_arrrayQueue(ArrayPriorityQueue* Q, Node* n)
 {
     if(Q->dim_queue > Q->num_of_elem)
