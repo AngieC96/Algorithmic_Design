@@ -9,7 +9,13 @@ void printPair(Pair* p)
 
 Graph* createGraph()
 {
-  // FAREEEEEEEEEEEEEeee
+  Graph* g = (Graph*) malloc(sizeof(Graph));
+  createAdjacencyList(g);
+  g->V = (Node*) malloc(g->N * sizeof(Node));
+  for(int i = 0; i < g->N; ++i) {
+    g->V[i].key = i;
+  }
+  return g;
 }
 
 void createAdjacencyList(Graph* g)
@@ -30,12 +36,10 @@ void createAdjacencyList(Graph* g)
   }
   for(int i = 0; i < g->M; ++i) {
     fscanf(fp, "%d %d %d", &outNode, &inNode, &weigth);
-    Pair p = {inNode, weigth};
-    push_back_void(&g->adjacencyList[outNode], &p);
-  }
-  g->V = (Node*) malloc(g->N * sizeof(Node));
-  for(int i = 0; i < g->N; ++i) {
-    g->V[i].key = i;
+    Pair* p = (Pair*) malloc(sizeof(Pair));
+    p->a = inNode;
+    p->b = weigth;
+    push_back_void(&g->adjacencyList[outNode], p);
   }
 
   fclose(fp);

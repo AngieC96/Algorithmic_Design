@@ -21,7 +21,7 @@ typedef struct {
     /** @brief The content of the Node (satellite data). */
     void* value;
     /** @brief The distance from the source s. */
-    unsigned long int d;
+    unsigned int d;
     /** @brief The predecessor of this Node in the shortest path from the source s. */
     struct Node* pred;
 } Node;
