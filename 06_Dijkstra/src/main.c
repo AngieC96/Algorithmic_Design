@@ -115,11 +115,7 @@ int main(int argc, char *argv[])
     printNode(&gg->V[1], int_printer);
     printf("\n");
     printf("Distance of source: %d\n", gg->V[gg->S].d);
-    printf("Final distances:\n");
-    for(int i = 0; i < gg->N; ++i) {
-        printf("%d ", gg->V[i].d);
-    }
-    printf("\n");
+    printDistancesAndPreds(gg);
 
 
     return 0;

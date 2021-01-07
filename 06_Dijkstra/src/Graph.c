@@ -14,6 +14,7 @@ Graph* createGraph()
   g->V = (Node*) malloc(g->N * sizeof(Node));
   for(int i = 0; i < g->N; ++i) {
     g->V[i].key = i;
+    g->V[i].pred = NULL;
   }
   return g;
 }
@@ -60,4 +61,18 @@ void printGraph(Graph* g)
 // void printList(const ListNode* l, void (*key_printer)(const void *value));
 //      ^~~~~~~~~
     }
+}
+
+void printDistancesAndPreds(Graph* g)
+{
+    printf("Distances and preds:\n");
+    for(int i = 0; i < g->N; ++i) {
+        printf("[%d, ", g->V[i].d);
+        if(g->V[i].pred) {
+            printf("%d] ", ((Node*)g->V[i].pred)->key);
+        } else {
+            printf("%p] ", g->V[i].pred);
+        }
+    }
+    printf("\n");
 }
