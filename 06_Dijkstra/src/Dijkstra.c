@@ -21,20 +21,22 @@ void dijkstra_array(Graph* G, int s)
 {
     init_sssp(G);
     G->V[s].d = 0;
-    printf("Ciao\n");
-    //ArrayPriorityQueue* Q = build_arrayQueue(G);
-    // All the nodes are in Q at the beginning of the computation
-    //while (!is_arrayQueue_empty(Q))  // One node u is extracted at each iteration
-    //{
-        //printf("In Dijkstra\n");
-        //Node* u = extract_min_arrrayQueue(Q);
-        //while(G->adjacencyList[u->key] && G->adjacencyList[u->key]->next)  // iterates on the adjacency list of u
-        //printf("Inside while\n");
+    ArrayPriorityQueue* Q = build_arrayQueue(G);    // All the nodes are in Q at the beginning of the computation
+    while (!is_arrayQueue_empty(Q)) {   // One node u is extracted at each iteration
+        Node* u = extract_min_arrrayQueue(Q);
+        printf("Node %d\n", u->key);
+        printNode(u, int_printer);
+        ListNode* tmp = G->adjacencyList[u->key];
+        printf("\ttmp: %d\n", (int)((Pair*)tmp->T)->a);
+        while(tmp && tmp->next) { // iterates on the adjacency list of u
+            printf("\tInside while: %d \n", (int)((Pair*)tmp->T)->a);
+            tmp = G->adjacencyList[u->key]->next;
+            printf("\tInside while 2: %d\n", (int)((Pair*)tmp->T)->a);
         //printf("%d, %d\n", ((Pair*)G->adjacencyList[u->key]->T)->a, ((Pair*)G->adjacencyList[u->key]->T)->b);
         //for (v, w) in G.Adj(u){
         //    relax(Q, u, v, w);
-        //}
-    //}
+        }
+    }
 }
 
 void dijkstra_binheap(Graph* G, int s)

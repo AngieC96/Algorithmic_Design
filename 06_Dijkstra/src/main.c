@@ -15,7 +15,8 @@
 
 int main(int argc, char *argv[])
 {
-    /* ListNode* list = NULL;
+    /* printf("Lista:\n");
+    ListNode* list = NULL;
     printf("Void list: %p\n", list);
     // Create and print an int linked list
     int arr[] = {10, 20, 30, 40, 50};
@@ -42,7 +43,7 @@ int main(int argc, char *argv[])
     Ldestructor(&list2);
     printf("Destroyed list: %p\n", list); */
 
-    printf("Grafo\n");
+    //printf("Grafo:\n");
     //Graph g;
     //g.adjacencyList = NULL;
     //int a = 10, b=20;
@@ -59,7 +60,7 @@ int main(int argc, char *argv[])
     printList(adjacencyList[0], int_printer);
 */
     //createAdjacencyList(&g);
-    Graph* g = createGraph();
+/*  Graph* g = createGraph();
     printf("Nodes: %d,\tEdges: %d,\tSource: %d\n", g->N, g->M, g->S);
     printGraph(g);
     printf("Content of node %d: %p\n", g->V[3].key, g->V[3].value);
@@ -99,8 +100,14 @@ int main(int argc, char *argv[])
         printf("%d ", g->V[i].d);
     }
     printf("\n");
-    dijkstra_array(g, g->S);
-    printf("%d\n", g->V[g->S].d);
+    printf("La coda è vuota? %d\n", is_arrayQueue_empty(q));
+*/
+
+    printf("Dijkstra:\n");
+    Graph* gg = createGraph();
+    printGraph(gg);
+    dijkstra_array(gg, gg->S);
+    printf("Distance of source: %d\n", gg->V[gg->S].d);
 
 
     return 0;

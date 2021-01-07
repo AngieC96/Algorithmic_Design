@@ -33,13 +33,15 @@ Node* extract_min_arrrayQueue(ArrayPriorityQueue *Q)
 {
     Node* node_min = (Node*) malloc(sizeof(Node));
     node_min = Q->array[0];
+    int i_min = 0;
     for(int i = 1; i < Q->num_of_elem; ++i) {
         if(Q->array[i]->d < node_min->d) {
             node_min = Q->array[i];
+            i_min = i;
         }
     }
-    for(int i = node_min->key+1; i < Q->num_of_elem; ++i) {
-        Q->array[i-1] = Q->array[i];
+    for(int j = i_min+1; j < Q->num_of_elem; ++j) {
+        Q->array[j-1] = Q->array[j];
     }
     --Q->num_of_elem;
 
