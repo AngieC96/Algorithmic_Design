@@ -19,7 +19,7 @@
 
 void init_sssp(Graph* G);
 
-//void relax(Q, v, u, w);
+void relax(ArrayPriorityQueue*Q, Node* u, Node* v, int w);
 
 void dijkstra_array(Graph* G, int s);
 
