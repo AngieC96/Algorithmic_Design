@@ -111,16 +111,18 @@ int main(int argc, char *argv[])
     // }
     // printf("\n");
     dijkstra_array(gg, gg->S);
-    printf("Node: ");
-    printNode(&gg->V[1], int_printer);
-    printf("\n");
-    printf("Distance of source: %d\n", gg->V[gg->S].d);
+    // printf("Node: ");
+    // printNode(&gg->V[1], int_printer);
+    // printf("\n");
+    // printf("Distance of source: %d\n", gg->V[gg->S].d);
     printDistancesAndPreds(gg);
 
     printf("\nHeaps:\n");
     Graph* ggg = createGraph();
-    printf("Leq: 1 = %d\n", leq_d(&ggg->V[1], &ggg->V[2]));
-    printf("Leq: 0 = %d\n", leq_d(&ggg->V[2], &ggg->V[1]));
+    //init_sssp(ggg);
+    //ggg->V[ggg->S].d = 0;
+    //printf("Leq: 1 = %d\n", leq_d(&ggg->V[1], &ggg->V[2]));
+    //printf("Leq: 0 = %d\n", leq_d(&ggg->V[2], &ggg->V[1]));
     dijkstra_binheap(ggg, ggg->S);
     printf("Distance of source: %d\n", ggg->V[ggg->S].d);
     printDistancesAndPreds(ggg);
