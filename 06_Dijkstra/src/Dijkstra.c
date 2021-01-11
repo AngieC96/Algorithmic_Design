@@ -43,7 +43,7 @@ void relax_heap(binheap_type* Q, Node* u, Node* v, int w)
 }
 
 void dijkstra_binheap(Graph* G, int s)
-{    
+{
     init_sssp(G);
     G->V[s].d = 0;
     // I need an array for the queue since it is an inplace algorithm, and if I use G.V thenit swaps the
@@ -54,27 +54,36 @@ void dijkstra_binheap(Graph* G, int s)
     binheap_type* Q = build_heap(A, G->N, G->N, sizeof(Node), leq_d); // All the nodes are in Q at the beginning of the computation
     printf("Addresses: %p = %p are equal %d\n", G->V, Q->A, G->V == Q->A);
     print_heap(Q, printNode);
-    //printf("Q.A: ");
-    //for(int i = 0; i < G->N; ++i){
-    //    Node aaa = ((Node) Q->A)[i];
-    //    printf("[%d, %d] ", aaa.key, aaa.d);}
-    //printf("\n");
+    printf("Q.A: ");
+    for(int i = 0; i < Q->num_of_elem; ++i)
+        printf("[%d, %d] ", ((Node*)Q->A)[i].key, ((Node*)Q->A)[i].d);
+    printf("\n");
     printf("G.V: ");
     for(int i = 0; i < G->N; ++i)
         printf("[%d, %d] ", G->V[i].key, G->V[i].d);
     printf("\n\n");
-    while (!is_heap_empty(Q)) {   // One node u is extracted at each iteration
+    //while (!is_heap_empty(Q)) {   // One node u is extracted at each iteration
         Node* u = extract_min(Q);
         printf("Node %d, in graph: %p\n", u->key, &G->V[u->key]);
         ListNode* tmp = G->adjacencyList[u->key];
         while(tmp) {   // iterates on the adjacency list of u
             relax_heap(Q, &G->V[u->key], &G->V[(int)((Pair*)tmp->T)->a], (int)((Pair*)tmp->T)->b);
-            //heapify(Q, 0);
             printf("\tInside while. Node %d, weigth %d (tmp)\n", ((Pair*)tmp->T)->a, ((Pair*)tmp->T)->b);
-            printf("\tNodes. tmp: %d, v: %d\n", ((Pair*)tmp->T)->a, G->V[((Pair*)tmp->T)->a].key);
-            decrease_key(Q, v, u->d + w);
             Node* v = &G->V[((Pair*)tmp->T)->a];
             int w = (int)((Pair*)tmp->T)->b;
+            //void* p = decrease_key(Q, v, u->d + w);
+            //if (p)
+            //    printf("\tReturn of decrease_key: [%d, %d]\n", ((Node*)p)->key, ((Node*)p)->d);
+            //else
+            //    printf("\t%p\n", p);
+            heapify(Q, 0);
+            // I need to modify the value of d in the node of the queue, since with decrease_key I cannot d it (it doesn't access the field d)
+            ((Node*)Q->A)[1].d = w;
+            heapify(Q, 0);
+            printf("\tQ.A: ");
+            for(int i = 0; i < Q->num_of_elem; ++i)
+                printf("[%d, %d] ", ((Node*)Q->A)[i].key, ((Node*)Q->A)[i].d);
+            printf("\n");
             if(u->d + w < v->d){
                 G->V[(int)((Pair*)tmp->T)->a].d = u->d + w;
             }
@@ -82,11 +91,11 @@ void dijkstra_binheap(Graph* G, int s)
                                                             G->V[(int)((Pair*)tmp->T)->a].key, G->V[(int)((Pair*)tmp->T)->a].d,
                                                             ((Node*)min_value(Q))->key, ((Node*)min_value(Q))->d);
             print_heap(Q, printNode);
-            printf("G.V: ");
+            printf("\tG.V: ");
             for(int i = 0; i < G->N; ++i)
                 printf("[%d, %d] ", G->V[i].key, G->V[i].d);
             printf("\n\n");
             tmp = tmp->next;
         }
-    }
+    //}
 }
