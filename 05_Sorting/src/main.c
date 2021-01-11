@@ -9,7 +9,7 @@
 #include "total_order.h"
 #include "utilities.h"
 
-#define MAX_SIZE_ALL (1<<18) //13
+#define MAX_SIZE_ALL (1<<13) //18
 #define MAX_SIZE_NLOGN (1<<20)
 #define ARRAY_SIZE (1<<23)
 

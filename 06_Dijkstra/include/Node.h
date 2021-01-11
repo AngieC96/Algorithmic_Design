@@ -27,7 +27,7 @@ typedef struct {
 } Node;
 
 /**********************************************************************
- * Decrease the value of node's key.  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ * Decrease the value of node's distance @ref d.  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  *
  * This function decreases the value of a node's key and returns a 
  * pointer to the node in which the new value is stored. If either the 
@@ -43,6 +43,24 @@ typedef struct {
  *         value or the node does not belong to the H, NULL is returned.
  **********************************************************************/
 const Node* decrease_dist(Node* node, const int value);
+
+/**********************************************************************
+ * Confront the valuea of two node's distances d.  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+ *
+ * This function decreases the value of a node's key and returns a 
+ * pointer to the node in which the new value is stored. If either the 
+ * new value is greater than of equal to the old key value or the node 
+ * does not belong to the considered heap, the heap remains unchanged 
+ * and NULL is returned. The asymptotic time-complexity of this 
+ * function is O(log n).
+ *
+ * @param node is a pointer to the node whose key should be decreased.
+ * @param value is a pointer to the new value of the node's key.
+ * @return a pointer to the node in which the new value is stored. If 
+ *         either the new value is greater than of equal to the old key
+ *         value or the node does not belong to the H, NULL is returned.
+ **********************************************************************/
+int leq_d(const void *a, const void *b);
 
 
 /**********************************************************************

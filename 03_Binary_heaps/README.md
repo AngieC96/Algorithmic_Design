@@ -41,7 +41,7 @@ In order to install the library, you can set the install directory `<BINHEAP_INS
 cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=<BINHEAP_INSTALL_DIR> CMakeLists.txt
 ```
 
-If you don't do it, the library and its headers will be installed in `/usr/local/`. I've chosen the folder `~/Documenti/'Algorithmic Design/Algorithmic_Design/03_Binary_heaps'`.
+If you don't do it, the library and its headers will be installed in `/usr/local/`. I've chosen the folder `~/Documenti/AlgorithmicDesign/Algorithmic_Design/03_Binary_heaps`.
 
 After that simply write:
 
@@ -49,3 +49,4 @@ After that simply write:
 make install
 ```
 
+to build the library.

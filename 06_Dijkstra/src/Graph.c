@@ -67,7 +67,7 @@ void printDistancesAndPreds(Graph* g)
 {
     printf("Distances and preds:\n");
     for(int i = 0; i < g->N; ++i) {
-        printf("[%d, ", g->V[i].d);
+        printf("[%d, %d, ", g->V[i].key, g->V[i].d);
         if(g->V[i].pred) {
             printf("%d] ", ((Node*)g->V[i].pred)->key);
         } else {

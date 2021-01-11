@@ -55,4 +55,6 @@ void createAdjacencyList(Graph* g);
 
 void printGraph(Graph* g);
 
+void printDistancesAndPreds(Graph* g);
+
 #endif // __GRAPH__

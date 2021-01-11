@@ -84,7 +84,7 @@ QueueNode* Qtail(PriorityQueue* Q);
  * @return a pointer to the minimum in the heap, if H is not empty; 
  *         NULL otherwise.
  **********************************************************************/
-const QueueNode* extract_min(PriorityQueue *Q);
+const QueueNode* extract_min_pq(PriorityQueue *Q);
 
 /**********************************************************************
  * Decrease the value of node's key.  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -103,7 +103,7 @@ const QueueNode* extract_min(PriorityQueue *Q);
  *         either the new value is greater than of equal to the old key
  *         value or the node does not belong to the H, NULL is returned.
  **********************************************************************/
-const QueueNode* decrease_key(PriorityQueue* Q, QueueNode* node, const size_t value);
+const QueueNode* decrease_key_pq(PriorityQueue* Q, QueueNode* node, const size_t value);
 
 /**********************************************************************
  * Insert a value in the heap.   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -121,7 +121,7 @@ const QueueNode* decrease_key(PriorityQueue* Q, QueueNode* node, const size_t va
  *         either the new value is greater than of equal to the old key
  *         value or the node does not belong to the H, NULL is returned.
  **********************************************************************/
-const void *insert_value(PriorityQueue* Q, const void* value, size_t priority);
+const void *insert_value_pq(PriorityQueue* Q, const void* value, size_t priority);
 
 /**********************************************************************
  * Print a representation of the heap on the standard output.

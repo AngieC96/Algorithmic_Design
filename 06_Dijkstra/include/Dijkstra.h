@@ -16,12 +16,16 @@
 #include "ArrayPriorityQueue.h"
 #include "Graph.h"
 
+#include "binheap.h"  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 void init_sssp(Graph* G);
 
-void relax(ArrayPriorityQueue*Q, Node* u, Node* v, int w);
+void relax_array(ArrayPriorityQueue* Q, Node* u, Node* v, int w);
 
 void dijkstra_array(Graph* G, int s);
+
+void relax_heap(binheap_type* Q, Node* u, Node* v, int w);
 
 void dijkstra_binheap(Graph* G, int s);
 

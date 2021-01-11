@@ -37,6 +37,7 @@ void push_back_void(ListNode** head, const void* value)
   // Assumption: char takes 1 byte. 
   for (int i = 0; i < sizeof(value); i++)
     *(char *)(newNode->T + i) = *(char *)(value + i);
+  //memcpy(tmp, p_a, H->key_size);
   // Change tail pointer as new node is added at the end
   // We have to check if we have a NULL head (the list is empty), because in this case we have head = tail = newNode.
   if (*head == NULL) {

@@ -21,7 +21,7 @@ QueueNode* Qtail(PriorityQueue* Q)
     return tmp;
 }
 
-const QueueNode* extract_min(PriorityQueue *Q)
+const QueueNode* extract_min_pq(PriorityQueue *Q)
 {
     if(is_queue_empty(Q))
         return NULL;
@@ -34,7 +34,7 @@ const QueueNode* extract_min(PriorityQueue *Q)
     return tmp;
 }
 
-const QueueNode* decrease_key(PriorityQueue* Q, QueueNode* node, const size_t value)
+const QueueNode* decrease_key_pq(PriorityQueue* Q, QueueNode* node, const size_t value)
 {
     if(is_queue_empty(Q))
         return NULL;
@@ -65,7 +65,7 @@ const QueueNode* decrease_key(PriorityQueue* Q, QueueNode* node, const size_t va
     return tmp;
 }
 
-const void *insert_value(PriorityQueue* Q, const void* value, size_t priority)
+const void *insert_value_pq(PriorityQueue* Q, const void* value, size_t priority)
 {
     // Allocate memory for the new node
     QueueNode* newNode = (QueueNode*) malloc(sizeof(QueueNode));
