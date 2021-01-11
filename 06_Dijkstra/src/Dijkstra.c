@@ -23,7 +23,7 @@ void dijkstra_array(Graph* G, int s)
     init_sssp(G);
     G->V[s].d = 0;
     ArrayPriorityQueue* Q = build_arrayQueue(G);   // All the nodes are in Q at the beginning of the computation
-    while (!is_arrayQueue_empty(Q)) {   // One node u is extracted at each iteration
+    while (!is_arrayQueue_empty(Q)) {   // One node u is extracted at each iteration, the one with minimum d
         Node* u = extract_min_arrrayQueue(Q);
         ListNode* tmp = G->adjacencyList[u->key];
         while(tmp) {   // iterates on the adjacency list of u
@@ -36,8 +36,17 @@ void dijkstra_array(Graph* G, int s)
 void relax_heap(binheap_type* Q, Node* u, Node* v, int w)
 {
     if(u->d + w < v->d){
+        // Update distance in the queue Q
+        // I need to manually modify the value of d in the node of the queue, since with decrease_key I cannot d it (it doesn't access the field d)
+        int i;
+        heapify(Q, 0);
+        for(i = 0; i < Q->num_of_elem; ++i) {
+            if (((Node*)Q->A)[i].key == v->key)
+                ((Node*)Q->A)[i].d = u->d + w;
+        }
+        heapify(Q, 0);
+        // Update distance in the graph's set of nodes V
         decrease_dist(v, u->d + w);
-        decrease_key(Q, v, u->d + w);
         v->pred = u;
     }
 }
@@ -52,44 +61,25 @@ void dijkstra_binheap(Graph* G, int s)
     for (int i = 0; i < G->N; ++i)
         memcpy(&A[i], &G->V[i], sizeof(Node));
     binheap_type* Q = build_heap(A, G->N, G->N, sizeof(Node), leq_d); // All the nodes are in Q at the beginning of the computation
-    printf("Addresses: %p = %p are equal %d\n", G->V, Q->A, G->V == Q->A);
-    print_heap(Q, printNode);
-    printf("Q.A: ");
-    for(int i = 0; i < Q->num_of_elem; ++i)
-        printf("[%d, %d] ", ((Node*)Q->A)[i].key, ((Node*)Q->A)[i].d);
-    printf("\n");
-    printf("G.V: ");
-    for(int i = 0; i < G->N; ++i)
-        printf("[%d, %d] ", G->V[i].key, G->V[i].d);
-    printf("\n\n");
-    //while (!is_heap_empty(Q)) {   // One node u is extracted at each iteration
+    while (!is_heap_empty(Q)) {   // One node u is extracted at each iteration, the one with minimum d
         Node* u = extract_min(Q);
-        printf("Node %d, in graph: %p\n", u->key, &G->V[u->key]);
+        printf("Node %d\n", u->key);
         ListNode* tmp = G->adjacencyList[u->key];
         while(tmp) {   // iterates on the adjacency list of u
             relax_heap(Q, &G->V[u->key], &G->V[(int)((Pair*)tmp->T)->a], (int)((Pair*)tmp->T)->b);
             printf("\tInside while. Node %d, weigth %d (tmp)\n", ((Pair*)tmp->T)->a, ((Pair*)tmp->T)->b);
             Node* v = &G->V[((Pair*)tmp->T)->a];
             int w = (int)((Pair*)tmp->T)->b;
-            //void* p = decrease_key(Q, v, u->d + w);
-            //if (p)
-            //    printf("\tReturn of decrease_key: [%d, %d]\n", ((Node*)p)->key, ((Node*)p)->d);
-            //else
-            //    printf("\t%p\n", p);
-            heapify(Q, 0);
-            // I need to modify the value of d in the node of the queue, since with decrease_key I cannot d it (it doesn't access the field d)
-            ((Node*)Q->A)[1].d = w;
-            heapify(Q, 0);
+            printf("\tNode [%d, %d]. Graph node: [%d, %d]. ", v->key, v->d,
+                                                            G->V[(int)((Pair*)tmp->T)->a].key, G->V[(int)((Pair*)tmp->T)->a].d);
+            if (!is_heap_empty(Q))
+                printf("Queue min node: [%d, %d]\n", ((Node*)min_value(Q))->key, ((Node*)min_value(Q))->d);
+            else
+                printf("Queue empty\n");
             printf("\tQ.A: ");
             for(int i = 0; i < Q->num_of_elem; ++i)
                 printf("[%d, %d] ", ((Node*)Q->A)[i].key, ((Node*)Q->A)[i].d);
             printf("\n");
-            if(u->d + w < v->d){
-                G->V[(int)((Pair*)tmp->T)->a].d = u->d + w;
-            }
-            printf("\tNode [%d, %d]. Graph node: [%d, %d]. Queue min node: [%d, %d]\n", v->key, v->d,
-                                                            G->V[(int)((Pair*)tmp->T)->a].key, G->V[(int)((Pair*)tmp->T)->a].d,
-                                                            ((Node*)min_value(Q))->key, ((Node*)min_value(Q))->d);
             print_heap(Q, printNode);
             printf("\tG.V: ");
             for(int i = 0; i < G->N; ++i)
@@ -97,5 +87,5 @@ void dijkstra_binheap(Graph* G, int s)
             printf("\n\n");
             tmp = tmp->next;
         }
-    //}
+    }
 }
