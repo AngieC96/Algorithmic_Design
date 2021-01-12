@@ -6,8 +6,10 @@ unsigned int select_index(void *A, const int l, const int r,
                           const size_t elem_size, 
                           total_order leq)
 {
-    if((l - r) <= 10) {
-        quick_sort_aux(A, l, r, elem_size, leq);
+    if((r-l) <= 10) {
+        //quick_sort_aux(A, l, r, elem_size, leq);
+        //insertion_sort(A+l*elem_size, r-l+1, elem_size, leq);
+        selection_sort(A+l*elem_size, r-l+1, elem_size, leq);
         return i;
     }
 
@@ -18,9 +20,9 @@ unsigned int select_index(void *A, const int l, const int r,
 
     if (i < k[0]) {
         return select_index(A, l, k[0] - 1, i, elem_size, leq);
+    } else {  
+        return select_index(A, k[1] + 1, r, i, elem_size, leq);
     }
-    
-    return select_index(A, k[1] + 1, r, i, elem_size, leq);
 }
 
 unsigned int select_pivot(void *A, const int l, const int r,
@@ -28,15 +30,20 @@ unsigned int select_pivot(void *A, const int l, const int r,
                           total_order leq)
 {
     if((r - l) <= 10){
-        quick_sort_aux(A, l, r, elem_size, leq);
+        //quick_sort_aux(A, l, r, elem_size, leq);
+        //insertion_sort(A+l*elem_size, r-l+1, elem_size, leq);
+        selection_sort(A+l*elem_size, r-l+1, elem_size, leq);
         return (l+r)/2;
     }
     
     int chunks = (r - l) / 5;
+    int cl = 0, cr = 0;
     for(size_t c = 0; c < chunks; ++c){
-        int cl = l + c * 5;
-        int cr = cl + 4;
-        quick_sort_aux(A, cl, cr, elem_size, leq);
+        cl = l + c * 5;
+        cr = cl + 4;
+        //quick_sort_aux(A, cl, cr, elem_size, leq);
+        //insertion_sort(A+cl*elem_size, cr-cl+1, elem_size, leq);
+        selection_sort(A+cl*elem_size, cr-cl+1, elem_size, leq);
         swap(A + (cl + 2) * elem_size, A + (l + c) * elem_size, elem_size);
     }
 

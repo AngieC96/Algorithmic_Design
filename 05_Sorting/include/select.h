@@ -6,6 +6,9 @@
 #include "total_order.h"
 #include "swap.h"
 #include "quick_sort.h"
+#include "insertion_sort.h"
+#include "selection_sort.h"
+
 
 /**********************************************************************
  * An implementation for the Select algorithm.

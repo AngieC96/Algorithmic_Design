@@ -12,7 +12,9 @@ void quick_sort(void *A, const unsigned int n,
 void quick_sort_aux(void *A, const int l, const int r, 
                 const size_t elem_size, total_order leq)
 {
-    int p; //, l1 = l, r1 = r;
+    int p;
+    
+    //int l1 = l, r1 = r;
     //while (l1 < r1){
     //    p = partition(A, l1, r1, l1, elem_size, leq);
     //    quick_sort_aux(A, l1, p - 1, elem_size, leq);

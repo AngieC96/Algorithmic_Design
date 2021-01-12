@@ -235,3 +235,31 @@ title("Computational time", adj = 0.5, line = 0.5, cex.main = .75)
 axis(1, at = 2^size, labels = T[, 1], cex.axis = .75)
 legend(x = 2, y = maxylim, legend = c("Insertion sort", "Quick sort", "Bubble sort", "Selection sort", "Heap sort"), col = c(4, 3, 2, 5, 6), lty = 1, cex = .7)
 dev.off()
+
+# Histogram of QuickSortSelect
+
+T <- as.matrix(read.csv("times_quicksortselect_histogram.csv", head = FALSE, sep = ","))
+par(mfrow=c(1,1))
+# Random case
+m <- seq(0.025, 0.17, 0.001)  # ENLARGE IT TO BE SURE!!!!!!
+p1 <- hist(T[, 1], breaks = m, col = 4)  # quick_sort
+p3 <- hist(T[, 3], breaks = m, col = 3)  # quick_sort_select  
+
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="../figs/quicksortselect_hist_random.png")
+par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
+plot(p1, xlim=c(0.025, 0.17), col = 4, main = "Random case")
+plot(p3, xlim=c(0.025, 0.17), col = 3, add=T)
+legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
+dev.off()
+
+# Worst case
+m <- seq(0.13, 1.5, 0.01)  # ENLARGE IT TO BE SURE!!!!!!
+p2 <- hist(T[, 2], breaks = m, col = 4)  # quick_sort
+p4 <- hist(T[, 4], breaks = m, col = 3)  # quick_sort_select  
+
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="../figs/quicksortselect_hist_worst.png")
+par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
+plot(p2, xlim=c(0.13, 1.5), col = 4, main = "Worst case")
+plot(p4, xlim=c(0.13, 1.5), col = 3, add=T)
+legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
+dev.off()
