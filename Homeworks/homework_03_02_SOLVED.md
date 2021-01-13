@@ -62,11 +62,11 @@
       
       The following plot shows that the red line of Quick Sort + Select in the *random* case is slightly above, so it's slightly worse, than the blue line of Quick Sort in the *random* case, while the yellow line of Quick Sort + Select in the *worst* case is much more below, so it's much more better, than the light blue line of the Quick Sort in the *worst* case. Thus, while the Quick Sort algorithm is better that the Quick Sort + Select algorithm in the *random* case (since I'm already in a good case, and also performing the Select algorithm only slows down the algorithm), for the *worst* case the Select algorithm greatly improves the performance of Quick Sort.
 
-   <img src="figs/quick_sort_plus_select.png" alt="quick_sort_plus_select" style="zoom:46%;" />
+   <img src="figs/quick_sort_plus_select.png" alt="quick_sort_plus_select" style="zoom:40%;" />
    
    Increasing the size of the array to be sorted, we can see that the Quick Sort algorithm with Select, for $n > 2^{18}$, is much more better than the Quick Sort algorithm alone also in the *random* case. Anyway, the Heap Sort algorithm is still better than both of them.
    
-   <img src="figs/extras.png" alt="extras" style="zoom:46%;" />
+   <img src="figs/extras.png" alt="extras" style="zoom:40%;" />
    
    We have that the Quick Sort algorithm in the *random* case, with a balanced partition, is $\Theta(n \log n)$, while in the worst case, when the array is already sorted, the partition is not balanced at all, since one part is always empty, and the complexity is $\Theta(n^2)$. The Selection algorithm makes sure that every partition of the array is never unbalanced, so that there is never an empty part. In this way, also the worst case falls into the best case of Quick Sort, and the complexity is $\Theta(n\log n)$ in every case. But as we have seen from the plots, we need to have an array of length greater than $2^{18}$ to be able to exploit this, otherwise the Select algorithm, for small values of $n$, is just a burden.
    
