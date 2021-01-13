@@ -70,6 +70,12 @@
    
    We have that the Quick Sort algorithm in the *random* case, with a balanced partition, is $\Theta(n \log n)$, while in the worst case, when the array is already sorted, the partition is not balanced at all, since one part is always empty, and the complexity is $\Theta(n^2)$. The Selection algorithm makes sure that every partition of the array is never unbalanced, so that there is never an empty part. In this way, also the worst case falls into the best case of Quick Sort, and the complexity is $\Theta(n\log n)$ in every case. But as we have seen from the plots, we need to have an array of length greater than $2^{18}$ to be able to exploit this, otherwise the Select algorithm, for small values of $n$, is just a burden.
    
+   We can see the histograms of the times of the *random* case and of the *worst* case of the two different algorithms of Quick Sort, both run for $1000$ times on an array of length $2^{16}$: the normal one and the one with the Select algorithm.
+   
+   <img src="figs/quicksortselect_hist_random2.png" alt="quicksortselect_hist_random" width="49%;" /> <img src="figs/quicksortselect_hist_worst2.png" alt="quicksortselect_hist_worst" width="49%;" />
+   
+   We can see that in the *random* case the Quick Sort + Select is slower then the Quick Sort, while in the *worst* case is the opposite, and the medians are quite apart in both cases, so it's not because of a fluctuation.
+   
 3. *(Ex. 9.3-1 in [[1]](#ref1)) In the algorithm $\texttt{SELECT}$, the input elements are divided into chunks of $5$. Will the algorithm work in linear time if they are divided into chunks of $7$? What about chunks of $3$?*
 
    If the input elements are divided into chunks of $7$ we have that there will be $\left\lceil \frac n7 \right\rceil$ chunks, there will be $\left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil$ $m_i$ (median of the chunk $C_i$) greater or equal to $m$ (the median of the $m_i$'s), there will be $\left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil - 2$ chunks that have at least $3$ elements greater then $m$, there will be at least $4 \left( \left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil - 2\right) \ge \frac2{7}n - 8$ elements that are greater than $m$. So an upper bound for the number of elements smaller or equal to $m$ is $n - \left( \frac27 n - 8 \right) = \frac57 n + 8$.

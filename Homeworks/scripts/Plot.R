@@ -290,7 +290,7 @@ p3 <- hist(T[, 3], breaks = m, col = 3)  # quick_sort_select
 
 png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quicksortselect_hist_random.png")
 par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
-plot(p1, xlim=c(0.025, 0.17), col = 4, main = "Random case")
+plot(p1, xlim=c(0.025, 0.17), col = 4, main = "Random case", xlab="Time")
 plot(p3, xlim=c(0.025, 0.17), col = 3, add=T)
 legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
 dev.off()
@@ -302,7 +302,7 @@ p4 <- hist(T[, 4], breaks = m, col = 3)  # quick_sort_select
 
 png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quicksortselect_hist_worst.png")
 par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
-plot(p2, xlim=c(0.13, 1.5), col = 4, main = "Worst case")
+plot(p2, xlim=c(0.13, 1.5), col = 4, main = "Worst case", xlab="Time")
 plot(p4, xlim=c(0.13, 1.5), col = 3, add=T)
 legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
 dev.off()
