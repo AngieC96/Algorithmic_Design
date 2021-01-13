@@ -159,7 +159,7 @@ dev.off()
 ## Sorting
 
 T <- as.matrix(read.csv("times/timing_insertion_sort.csv", head = TRUE, sep = "\t"))
-size <- seq(2, 13, 1)
+size <- seq(2, 18, 1)
 random <- as.numeric(T[, 2])
 best <- as.numeric(T[, 3])
 worst <- as.numeric(T[, 4])
@@ -194,24 +194,42 @@ dev.off()
 
 
 T <- as.matrix(read.csv("times/timing_quick_sort.csv", head = TRUE, sep = "\t"))
-size <- seq(2, 13, 1)
-random <- as.numeric(T[, 2])
-worst <- as.numeric(T[, 3])
+size <- seq(2, 18, 1)
+qs_random <- as.numeric(T[, 2])
+qs_worst <- as.numeric(T[, 3])
+qspluss_random <- as.numeric(T[, 4])
+qspluss_worst <- as.numeric(T[, 5])
 
-maxylim <- max(c(random, worst))
+maxylim <- max(c(qs_random, qs_worst))
 png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quick_sort.png")
 par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
-plot(2^size, random, pch = 20, col = 4, bg = 4 , type="p", xaxt = "n", ylim = c(0, maxylim), xlab = "Dimension", ylab = "Time [s]", cex.axis = .75, cex.lab = .75)
-lines(2^size, random, col = 4)
-points(2^size, worst, pch = 20, col = 3, bg = 3)
-lines(2^size, worst, col = 3)
+plot(2^size, qs_random, pch = 20, col = 4, bg = 4 , type="p", xaxt = "n", ylim = c(0, maxylim), xlab = "Dimension", ylab = "Time [s]", cex.axis = .75, cex.lab = .75)
+lines(2^size, qs_random, col = 4)
+points(2^size, qs_worst, pch = 20, col = 3, bg = 3)
+lines(2^size, qs_worst, col = 3)
 title("Computational time", adj = 0.5, line = 0.5, cex.main = .75)
 axis(1, at = 2^size, labels = T[, 1], cex.axis = .75)
-legend(x = 2, y = maxylim, legend = c("Random", "Worst"), col = c(4, 3), lty = 1, cex = .7)
+legend(x = 2, y = maxylim, legend = c("QS Random", "QS Worst"), col = c(4, 3), lty = 1, cex = .7)
+dev.off()
+
+maxylim <- max(c(qs_random, qs_worst, qspluss_random, qspluss_worst))
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quick_sort_plus_select.png")
+par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
+plot(2^size, qs_random, pch = 20, col = 4, bg = 4 , type="p", xaxt = "n", ylim = c(0, maxylim), xlab = "Dimension", ylab = "Time [s]", cex.axis = .75, cex.lab = .75)
+lines(2^size, qs_random, col = 4)
+points(2^size, qs_worst, pch = 20, col = 5, bg = 5)
+lines(2^size, qs_worst, col = 5)
+points(2^size, qspluss_random, pch = 20, col = 2, bg = 2)
+lines(2^size, qspluss_random, col = 2)
+points(2^size, qspluss_worst, pch = 20, col = 7, bg = 7)
+lines(2^size, qspluss_worst, col = 7)
+title("Computational time", adj = 0.5, line = 0.5, cex.main = .75)
+axis(1, at = 2^size, labels = T[, 1], cex.axis = .75)
+legend(x = 2, y = maxylim, legend = c("QS Random", "QS Worst", "QS+S Random", "QS+S Worst"), col = c(4, 5, 2, 7), lty = 1, cex = .7)
 dev.off()
 
 T <- as.matrix(read.csv("times/timing_all.csv", head = TRUE, sep = "\t"))
-size <- seq(2, 13, 1)
+size <- seq(2, 18, 1)
 insertion <- as.numeric(T[, 2])
 quick <- as.numeric(T[, 3])
 bubble <- as.numeric(T[, 4])
@@ -236,16 +254,41 @@ axis(1, at = 2^size, labels = T[, 1], cex.axis = .75)
 legend(x = 2, y = maxylim, legend = c("Insertion sort", "Quick sort", "Bubble sort", "Selection sort", "Heap sort"), col = c(4, 3, 2, 5, 6), lty = 1, cex = .7)
 dev.off()
 
+labs <- T[, 1]
+T <- as.matrix(read.csv("times/timing_sorting_extra.csv", head = TRUE, sep = "\t"))
+size <- seq(2, 20, 1)
+quick_2 <- as.numeric(T[, 2])
+quickpluss_2 <- as.numeric(T[, 3])
+heap_2 <- as.numeric(T[, 4])
+
+quick <- c(quick, quick_2)
+quickpluss <- c(qspluss_random, quickpluss_2)
+heap <- c(heap, heap_2)
+
+maxylim <- max(c(quick, quickpluss, heap))
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/extras.png")
+par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
+plot(2^size, quick, pch = 20, col = 4, bg = 4 , type="p", xaxt = "n", ylim = c(0, maxylim), xlab = "Dimension", ylab = "Time [s]", cex.axis = .75, cex.lab = .75)
+lines(2^size, quick, col = 4)
+points(2^size, quickpluss, pch = 20, col = 3, bg = 3)
+lines(2^size, quickpluss, col = 3)
+points(2^size, heap, pch = 20, col = 2, bg = 2)
+lines(2^size, heap, col = 2)
+title("Computational time", adj = 0.5, line = 0.5, cex.main = .75)
+axis(1, at = 2^size, labels = c(labs, T[, 1]), cex.axis = .75)
+legend(x = 2, y = maxylim, legend = c("Quick Sort", "Quick Sort + Select", "Heap sort"), col = c(4, 3, 2), lty = 1, cex = .7)
+dev.off()
+
 # Histogram of QuickSortSelect
 
-T <- as.matrix(read.csv("times_quicksortselect_histogram.csv", head = FALSE, sep = ","))
+T <- as.matrix(read.csv("times/times_quicksortselect_histogram.csv", head = FALSE, sep = ","))
 par(mfrow=c(1,1))
 # Random case
 m <- seq(0.025, 0.17, 0.001)  # ENLARGE IT TO BE SURE!!!!!!
 p1 <- hist(T[, 1], breaks = m, col = 4)  # quick_sort
 p3 <- hist(T[, 3], breaks = m, col = 3)  # quick_sort_select  
 
-png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="../figs/quicksortselect_hist_random.png")
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quicksortselect_hist_random.png")
 par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
 plot(p1, xlim=c(0.025, 0.17), col = 4, main = "Random case")
 plot(p3, xlim=c(0.025, 0.17), col = 3, add=T)
@@ -257,7 +300,7 @@ m <- seq(0.13, 1.5, 0.01)  # ENLARGE IT TO BE SURE!!!!!!
 p2 <- hist(T[, 2], breaks = m, col = 4)  # quick_sort
 p4 <- hist(T[, 4], breaks = m, col = 3)  # quick_sort_select  
 
-png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="../figs/quicksortselect_hist_worst.png")
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quicksortselect_hist_worst.png")
 par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
 plot(p2, xlim=c(0.13, 1.5), col = 4, main = "Worst case")
 plot(p4, xlim=c(0.13, 1.5), col = 3, add=T)

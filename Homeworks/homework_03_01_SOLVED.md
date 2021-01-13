@@ -12,23 +12,23 @@
 
 - *For each of the implemented algorithm, draw a curve to represent the relation between the input size and the execution-time.*
 
-  For **Insertion sort** we have:
+  For **Insertion Sort** we have:
 
-  <img src="figs/insertion_sort.png" alt="insertion_sort" style="zoom:50%;" />
+  <img src="figs/insertion_sort.png" alt="insertion_sort" style="zoom:40%;" />
 
-  We can see that, as expected, the worst case (red) is the one that performs the worst, the random case (blue) is the one in the middle and the best case (green) is the one that performs better.
+  We can see that, as expected, the worst case (red line), in which the array is sorted in the opposite way, is the one that performs the worst, since it is $\Theta(n^2)$; the random case (blue line) is the one in the middle, since it is $O(n^2)$; and the best case (green line), in which the array is already sorted, is the one that performs better, since it is $\Theta(n)$.
 
   For **Quick Sort** we have:
 
-  <img src="figs/quick_sort.png" alt="quick_sort" style="zoom:50%;" />
+  <img src="figs/quick_sort.png" alt="quick_sort" style="zoom:40%;" />
 
-  Again as expected the worst case takes more time than a random case.
+  Again, as expected, the worst case, in which the array is already sorted, takes more time than a random case, since the first takes $\Theta(n^2)$ wile the second takes $\Theta(n \log n)$.
 
   For **Insertion Sort, Quick Sort, Bubble Sort, Selection Sort, and Heap Sort** altogether we have
 
-  <img src="figs/all.png" alt="all" style="zoom:50%;" />
+  <img src="figs/all.png" alt="all" style="zoom:40%;" />
 
-  We can see that the faster are Heap sort and Quick sort (it's under Heap sort), while the worst is Bubble sort.
+  We can see that the faster ones are Heap Sort and Quick Sort (its green line it's below Heap Sort's line on the bottom), while the worst is Bubble Sort.
 
 - *Argue about the following statement and answer the questions*
 

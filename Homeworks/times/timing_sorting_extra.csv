@@ -1,0 +1,3 @@
+Size	Quick Sort	Quick Sort + Select	Heap Sort
+2^19	0.984299	0.623133	0.333393
+2^20	3.598475	1.243013	0.733184

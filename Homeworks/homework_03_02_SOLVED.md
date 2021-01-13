@@ -49,19 +49,27 @@
       so its complexity is still $O(n)$.
 
 2. *Download the latest version of the code from*
-      
+   
       <p align=center> <i><a href="https://github.com/albertocasagrande/AD_sorting">https://github.com/albertocasagrande/AD_sorting</a></i></p>
       
       *and*
       
        - *Implement the $\texttt{SELECT}$ algorithm of Ex. [1](#point1).*
         - *Implement a variant of the $\texttt{QUICK SORT}$ algorithm using above-mentioned $\texttt{SELECT}$ to identify the best pivot for partitioning.*
-        - *Draw a curve to represent the relation between the input size and the execution-time of the two variants of $\texttt{QUICK SORT}$ (i.e, those of Ex. 2 and Ex. 1 of [this file](#homework_03_01_SOLVED.md)) and discuss about their complexities.*
+        - *Draw a curve to represent the relation between the input size and the execution-time of the two variants of $\texttt{QUICK SORT}$ (i.e, those of Ex. 2 and of Ex. 1 of [this file](#homework_03_01_SOLVED.md)) and discuss about their complexities.*
       
-      The solution with the implemented code are the functions `select_index` and `quick_sort_select` that can be found in the file `select.c` in the folder [Sorting](../Sorting).
+      The solution with the implemented code are the functions `select_index` (with the auxiliary functions `select_pivot` and `select_partition`) and `quick_sort_select` that can be found in the file `select.c` in the folder [05_Sorting](../05_Sorting).
       
-      The following graph ==....==
+      The following plot shows that the red line of Quick Sort + Select in the *random* case is slightly above, so it's slightly worse, than the blue line of Quick Sort in the *random* case, while the yellow line of Quick Sort + Select in the *worst* case is much more below, so it's much more better, than the light blue line of the Quick Sort in the *worst* case. Thus, while the Quick Sort algorithm is better that the Quick Sort + Select algorithm in the *random* case (since I'm already in a good case, and also performing the Select algorithm only slows down the algorithm), for the *worst* case the Select algorithm greatly improves the performance of Quick Sort.
 
+   <img src="figs/quick_sort_plus_select.png" alt="quick_sort_plus_select" style="zoom:46%;" />
+   
+   Increasing the size of the array to be sorted, we can see that the Quick Sort algorithm with Select, for $n > 2^{18}$, is much more better than the Quick Sort algorithm alone also in the *random* case. Anyway, the Heap Sort algorithm is still better than both of them.
+   
+   <img src="figs/extras.png" alt="extras" style="zoom:46%;" />
+   
+   We have that the Quick Sort algorithm in the *random* case, with a balanced partition, is $\Theta(n \log n)$, while in the worst case, when the array is already sorted, the partition is not balanced at all, since one part is always empty, and the complexity is $\Theta(n^2)$. The Selection algorithm makes sure that every partition of the array is never unbalanced, so that there is never an empty part. In this way, also the worst case falls into the best case of Quick Sort, and the complexity is $\Theta(n\log n)$ in every case. But as we have seen from the plots, we need to have an array of length greater than $2^{18}$ to be able to exploit this, otherwise the Select algorithm, for small values of $n$, is just a burden.
+   
 3. *(Ex. 9.3-1 in [[1]](#ref1)) In the algorithm $\texttt{SELECT}$, the input elements are divided into chunks of $5$. Will the algorithm work in linear time if they are divided into chunks of $7$? What about chunks of $3$?*
 
    If the input elements are divided into chunks of $7$ we have that there will be $\left\lceil \frac n7 \right\rceil$ chunks, there will be $\left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil$ $m_i$ (median of the chunk $C_i$) greater or equal to $m$ (the median of the $m_i$'s), there will be $\left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil - 2$ chunks that have at least $3$ elements greater then $m$, there will be at least $4 \left( \left\lceil \frac12 \left\lceil \frac n7 \right\rceil \right\rceil - 2\right) \ge \frac2{7}n - 8$ elements that are greater than $m$. So an upper bound for the number of elements smaller or equal to $m$ is $n - \left( \frac27 n - 8 \right) = \frac57 n + 8$.
