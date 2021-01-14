@@ -11,7 +11,6 @@
 
 #include "Node.h"
 #include "Graph.h"
-#include "utilities.h"
 
 
 typedef struct {

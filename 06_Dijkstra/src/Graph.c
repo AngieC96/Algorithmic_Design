@@ -27,7 +27,7 @@ void createAdjacencyList(Graph* g)
     exit(1);
   }
 
-  int outNode, inNode, weigth;
+  int outNode, inNode, weight;
   // Otherwise, to delete N and M from the file: count the number of different numbers and then do while(fscanf)
   fscanf(fp, "%d %d %d", &g->N, &g->M, &g->S);
 
@@ -36,10 +36,10 @@ void createAdjacencyList(Graph* g)
     g->adjacencyList[i] = NULL;
   }
   for(int i = 0; i < g->M; ++i) {
-    fscanf(fp, "%d %d %d", &outNode, &inNode, &weigth);
+    fscanf(fp, "%d %d %d", &outNode, &inNode, &weight);
     Pair* p = (Pair*) malloc(sizeof(Pair));
     p->a = inNode;
-    p->b = weigth;
+    p->b = weight;
     push_back_void(&g->adjacencyList[outNode], p);
   }
 

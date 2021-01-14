@@ -1,131 +1,62 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <limits.h>
 
-#include "List.h"
-#include "Node.h"
 #include "Graph.h"
-#include "ArrayPriorityQueue.h"
-#include "Dijkstra.h"
 #include "utilities.h"
 
-#define int_t(i) *((const int *)i)
-#define float_t(f) *((const float *)f)
+
+#define MAX_SIZE 8
+#define NUM_OF_REPETITIONS 15
 
 
 int main(int argc, char *argv[])
 {
-    /* printf("Lista:\n");
-    ListNode* list = NULL;
-    printf("Void list: %p\n", list);
-    // Create and print an int linked list
-    int arr[] = {10, 20, 30, 40, 50};
-    for (int i = 0; i < 5; ++i)
-       list = push_back(list, &arr[i]);
-       //push_back(list, &arr[i]);
-    printf("Value in head: %d\n", int_t(list->T));
-    printf("Value in head+1: %d\n", int_t(list->next->T));
-    int x = 60, y=70;
-    push_back(list, &x);
-    push_back(list, &y);
-    printList(list, int_printer);
+    unsigned int i = 1;
+    unsigned int G_size = 1;
+
+    printf("Size\tDijkstra array\tDijkstra binheap\t        \n");
+    for (; i <= MAX_SIZE; ++i) {
+        if (i <= 4) {
+            G_size *= 10;
+            printf("10^%d", i);
+        } else {
+            G_size = (i-3) * 10000;
+            printf("%d*10^4", (i-3));
+        }
+        
+        create_random_graph(G_size);
+
+        //Try Dijkstra with arrays and print results
+        Graph* g1 = createGraph();
+        //printGraph(g);
+        double t1 = test(dijkstra_array, g1, g1->S, G_size, NUM_OF_REPETITIONS);
+        //printDistancesAndPreds(g1);
+
+        // Try Dijkstra with heaps and print results
+        Graph* g2 = createGraph();
+        double t2 = test(dijkstra_binheap, g2, g2->S, G_size, NUM_OF_REPETITIONS);
+        //printDistancesAndPreds(g2);
+
+        int flag = 1;
+        for (int j = 0; j < G_size; ++j){
+            if (g1->V[j].d != g2->V[j].d) {
+                flag = 0;
+                printf("One difference in d! %d vs %d\n", g1->V[j].d, g2->V[j].d);
+            }
+            if (g1->V[j].pred && g2->V[j].pred) {
+                // I cannot compare g1->V[j].pred and g2->V[j].pred since they are different addressens since they refer to different graphs in memory (but equals in values)
+                if (((Node*)g1->V[j].pred)->key != ((Node*)g2->V[j].pred)->key) {
+                    flag = 0;
+                    printf("One difference in pred! %d vs %d\n", ((Node*)g1->V[j].pred)->key, ((Node*)g2->V[j].pred)->key);
+                }
+            }
+        }
     
-    // Create and print a float linked list 
-    ListNode* list2 = NULL;
-    float arr2[] = {10.1, 20.2, 30.3, 40.3, 50.5};
-    for (int i = 0; i < 5; ++i)
-        push_back_void(&list2, &arr2[i]);
-    printf("Value in head: %.2f\n", float_t(list2->T));
-    printf("Value in head+1: %.2f\n", float_t(list2->next->T));
-    printList(list2, float_printer);
-
-    Ldestructor(&list);
-    Ldestructor(&list2);
-    printf("Destroyed list: %p\n", list); */
-
-    //printf("Grafo:\n");
-    //Graph g;
-    //g.adjacencyList = NULL;
-    //int a = 10, b=20;
-    // push_back_void(&g.adjacencyList, &a);
-    // push_back_void(&g.adjacencyList, &b);
-    // printf("Value in head: %d\n", int_t(g.adjacencyList->T));
-    // printf("Value in head+1: %d\n", int_t(g.adjacencyList->next->T));
-    // printList(g.adjacencyList, int_printer);
-/*
-    ListNode** adjacencyList = (ListNode**) malloc(10 * sizeof(ListNode*));
-    adjacencyList[0] = NULL;
-    printList(adjacencyList[0], int_printer);
-    push_back_void(&adjacencyList[0], &a);
-    printList(adjacencyList[0], int_printer);
-*/
-    //createAdjacencyList(&g);
-/*  Graph* g = createGraph();
-    printf("Nodes: %d,\tEdges: %d,\tSource: %d\n", g->N, g->M, g->S);
-    printGraph(g);
-    printf("Content of node %d: %p\n", g->V[3].key, g->V[3].value);
-
-    ArrayPriorityQueue* q = build_arrayQueue(g);
-    printf("Queue # elem: %d\n", q->num_of_elem);
-    printf("Queue content: ");
-    printQueue(q, printNode);
-    int mamma = INT_MAX;
-    printf("\nMAX: %d\n", mamma);
-    init_sssp(g);
-    printf("Content of node.d %d: %d\n", g->V[0].key, g->V[0].d);
-    printf("Min of queue: %d\n", minimum_arrayQueue(q));
-    printf("Graph distances: ");
-    for(int i = 0; i < g->N; ++i) {
-        g->V[i].d = i;
-        printf("%d ", g->V[i].d);
+        printf("\t%lf\t%lf", t1, t2);
+        if (flag)
+            printf("\t  (OK)\n");
+        else
+            printf("\t  (KO)\n");
     }
-    printf("\n");
-    decrease_key_arrrayQueue(q, &g->V[4], 2);
-    printf("Queue content: ");
-    printQueue(q, printNode);
-    printf("Min of queue: %d\n", extract_min_arrrayQueue(q)->key);
-    printf("Queue # elem: %d\n", q->num_of_elem);
-    printf("Queue content: ");
-    printQueue(q, printNode);
-    insert_value_arrrayQueue(q, &(g->V[0]));
-    printf("Queue content: ");
-    printQueue(q, printNode);
-    insert_value_arrrayQueue(q, &(g->V[2]));
-    printf("Queue content: ");
-    printQueue(q, printNode);
-
-    init_sssp(g);
-    printf("Graph distances: ");
-    for(int i = 0; i < g->N; ++i) {
-        printf("%d ", g->V[i].d);
-    }
-    printf("\n");
-    printf("La coda è vuota? %d\n", is_arrayQueue_empty(q));
-*/
-
-    printf("Dijkstra:\n");
-    Graph* gg = createGraph();
-    printGraph(gg);
-    // for(int i = 0; i < gg->N; ++i) {
-    //     printf("%p ", &gg->V[i]);
-    // }
-    // printf("\n");
-    dijkstra_array(gg, gg->S);
-    // printf("Node: ");
-    // printNode(&gg->V[1], int_printer);
-    // printf("\n");
-    // printf("Distance of source: %d\n", gg->V[gg->S].d);
-    printDistancesAndPreds(gg);
-
-    printf("\nHeaps:\n");
-    Graph* ggg = createGraph();
-    //init_sssp(ggg);
-    //ggg->V[ggg->S].d = 0;
-    //printf("Leq: 1 = %d\n", leq_d(&ggg->V[1], &ggg->V[2]));
-    //printf("Leq: 0 = %d\n", leq_d(&ggg->V[2], &ggg->V[1]));
-    dijkstra_binheap(ggg, ggg->S);
-    printf("Distance of source: %d\n", ggg->V[ggg->S].d);
-    printDistancesAndPreds(ggg);
 
     return 0;
 }

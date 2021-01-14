@@ -18,6 +18,12 @@
 
 #include "binheap.h"  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+#ifdef NO_OUTPUT
+#define PRINTF(...)
+#else
+#define PRINTF(...) printf(__VA_ARGS__)
+#endif
+
 
 void init_sssp(Graph* G);
 

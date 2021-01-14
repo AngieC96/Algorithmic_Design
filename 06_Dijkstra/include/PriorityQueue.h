@@ -10,7 +10,6 @@
 #include <stdlib.h>
 
 #include "List.h"
-#include "utilities.h"
 
 /** @struct ListNode
  *  @brief A class to represent a node of a list.

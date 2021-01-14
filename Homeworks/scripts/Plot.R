@@ -295,6 +295,13 @@ plot(p3, xlim=c(0.025, 0.17), col = 3, add=T)
 legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
 dev.off()
 
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quicksortselect_hist_random2.png")
+par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
+plot(p1, xlim=c(0.025, 0.12), col = 4, main = "Random case", xlab="Time")
+plot(p3, xlim=c(0.025, 0.12), col = 3, add=T)
+legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
+dev.off()
+
 # Worst case
 m <- seq(0.13, 1.5, 0.01)  # ENLARGE IT TO BE SURE!!!!!!
 p2 <- hist(T[, 2], breaks = m, col = 4)  # quick_sort
@@ -305,4 +312,31 @@ par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(a
 plot(p2, xlim=c(0.13, 1.5), col = 4, main = "Worst case", xlab="Time")
 plot(p4, xlim=c(0.13, 1.5), col = 3, add=T)
 legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
+dev.off()
+
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/quicksortselect_hist_worst2.png")
+par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
+plot(p2, xlim=c(0.13, 0.9), col = 4, main = "Worst case", xlab="Time")
+plot(p4, xlim=c(0.13, 0.9), col = 3, add=T)
+legend("topright", legend = c("Quicksort", "Quicksort + Select"), col = c(4, 3), lty = 1, cex = .7)
+dev.off()
+
+
+## Dijkstra
+
+T <- as.matrix(read.csv("times/timing_dijkstra.csv", head = TRUE, sep = "\t"))
+size <- c(10, 100, 1000, seq(10000, 100000, 10000))
+dijk_array <- as.numeric(T[, 2])
+dijk_heap <- as.numeric(T[, 3])
+
+maxylim <- max(c(dijk_array, dijk_heap))
+png(width=8, height=6, units = "cm", res = 300, pointsize = 10, file="figs/dijkstra.png")
+par(mar=c(3,2.5,1,1), mgp=c(1.5, 0.5, 0)) # mar=c(bottom, left, top, right), c(axis title, axis labels, axis line). default: mar=c(5, 4, 4, 2) + 0.1, mgp=c(3, 1, 0)
+plot(size, dijk_array, pch = 20, col = 4, bg = 4 , type="p", xaxt = "n", ylim = c(0, maxylim), xlab = "Dimension", ylab = "Time [s]", cex.axis = .75, cex.lab = .75)
+lines(size, dijk_array, col = 4)
+points(size, dijk_heap, pch = 20, col = 3, bg = 3)
+lines(size, dijk_heap, col = 3)
+title("Computational time", adj = 0.5, line = 0.5, cex.main = .75)
+axis(1, at = size, labels = T[, 1], cex.axis = .75)
+legend(x = 2, y = maxylim, legend = c("Dijkstra array", "Dijkstra heap"), col = c(4, 3), lty = 1, cex = .7)
 dev.off()
