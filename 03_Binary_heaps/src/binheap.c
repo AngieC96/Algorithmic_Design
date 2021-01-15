@@ -34,6 +34,7 @@ const void *min_value(const binheap_type *H)
 
 void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b)
 {
+    // n_a and n_b contain the indexes in A of the nodes to swap
     void *p_a = ADDR(H, n_a);
     void *p_b = ADDR(H, n_b);
     void *tmp = malloc(H->key_size);
@@ -47,7 +48,7 @@ void swap_keys(binheap_type *H, unsigned int n_a, unsigned int n_b)
 
 void heapify(binheap_type *H, unsigned int node)
 {
-    unsigned int dst_node = node; // The node containing the minimum among the node and its children
+    unsigned int dst_node = node; // The node that will contain the minimum among the node and its children
     unsigned int child;
 
     do {
@@ -193,7 +194,7 @@ const void *insert_value(binheap_type *H, const void *value)
 
     // Get the position of the new node
     void *new_node_addr = ADDR(H, H->num_of_elem); // Address in the array A of the new node
-    memcpy(new_node_addr, H->max_order_value, H->key_size);
+    memcpy(new_node_addr, H->max_order_value, H->key_size); // Put the max value in it, then decrease it with decrease_key so it is also inserted in the right position
 
     // In crease the size of the neap by 1
     H->num_of_elem++;

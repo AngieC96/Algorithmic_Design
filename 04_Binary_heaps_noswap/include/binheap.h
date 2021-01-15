@@ -8,8 +8,10 @@
  */
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
-#include <total_orders.h>
+#include "total_orders.h"
 
 /** @struct binheap_type
  *  @brief A class to represent binary heaps.
@@ -17,14 +19,24 @@
  *  This class is mean to represent binary heaps.
  */
 typedef struct {
-    void *A; // this is the array used to store heap nodes
-    unsigned int *key_pos; // reports the position of the key of a node inside A
-    unsigned int *rev_pos; // reports the node corresponding to a given position
-    unsigned int num_of_elem; // this is the number of nodes in the heap
-    unsigned int max_size; // this is the maximum number of nodes, i.e. size of A
-    size_t key_size; // this is the size of the key tipe (the keys are the values stored in the heap)
-    total_order_type leq; // this is the heap total order
-    void *max_order_value; // this is the maximum value stored in the heap
+    /** @brief This is the array used to store heap nodes. */
+    void *A;
+    /** @brief Reports the position of the key of a node inside A. */
+    // If i is a node in the heap, key_pos[i] is its position in A
+    unsigned int *key_pos;
+    /** @brief Reports the node corresponding to a given position. */
+    // If i is an index, the node A[i] is in position rev_pos[i] in the heap
+    unsigned int *rev_pos;
+    /** @brief This is the number of nodes in the heap. */
+    unsigned int num_of_elem;
+    /** @brief This is the maximum number of nodes, i.e. size of A. */
+    unsigned int max_size;
+    /** @brief This is the size of the key tipe (the keys are the values stored in the heap). */
+    size_t key_size;
+    /** @brief This is the heap total order. */
+    total_order_type leq;
+    /** @brief This is the maximum value stored in the heap. */
+    void *max_order_value;
 } binheap_type;
 
 /**********************************************************************

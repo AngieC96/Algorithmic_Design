@@ -91,6 +91,7 @@ foreach( EXECUTABLE ${EXECUTABLES} )
    target_link_libraries(${EXECUTABLE} ${PROJECT_LIB_NAME} "common")
    set_property(TARGET ${EXECUTABLE} PROPERTY C_STANDARD 99)
 endforeach( EXECUTABLE ${EXECUTABLES} )
+add_executable (test_binheap ${SOURCES})
 
 include( InstallRequiredSystemLibraries )
 
