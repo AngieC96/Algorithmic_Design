@@ -4,15 +4,15 @@
 
 - *Implement the array-based representation of binary heap together with the functions $\texttt{HEAP_MIN}$, $\texttt{REMOVE_MIN}$, $\texttt{HEAPIFY}$, $\texttt{BUILD_HEAP}$, $\texttt{DECREASE_KEY}$, and $\texttt{INSERT_VALUE}$.*
 
-  The solution can be found in the file `binheap.c` in the folder [Binary_heaps](../Binary_heaps), with the corresponding names `min_value`, `extract_min`, `heapify`, `build_heap`, `decrease_key` and `insert_value`. The functions `is_heap_empty`, `swap_keys`, `find_the_max`, `delete_heap`, and `print_heap` are also added.
+  The solution can be found in the file `binheap.c` in the folder [03_Binary_heaps](../03_Binary_heaps), with the corresponding names `min_value`, `extract_min`, `heapify`, `build_heap`, `decrease_key` and `insert_value`. The functions `is_heap_empty`, `swap_keys`, `find_the_max`, `delete_heap`, and `print_heap` are also added.
 
 - *Implement an iterative version of $\texttt{HEAPIFY}$.*
 
-  The solution can be found in the function `heapify`, contained in the file `binheap.c` in the folder [Binary_heaps](../Binary_heaps).
+  The solution can be found in the function `heapify`, contained in the file `binheap.c` in the folder [03_Binary_heaps](../03_Binary_heaps).
 
 - *Test the implementation on a set of instances of the problem and evaluate the execution time.*
 
-  After running the program [`test_delet_min`](../Binary_heaps/tests/test_delete_min.c), contained in the folder [Binary_heaps/tests](../Binary_heaps/tests), the following output was generated:
+  After running the program [`test_delet_min`](../Binary_heaps/tests/test_delete_min.c), contained in the folder [03_Binary_heaps/tests](../03_Binary_heaps/tests), the following output was generated:
 
   ```bash
   $ ./test_delete_min
