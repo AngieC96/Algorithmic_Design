@@ -21,13 +21,13 @@ The folder [02_Strassen_alg_rect](02_Strassen_alg_rect) contains some code to si
 
 
 
-## 03 Binary heaps
+## 03 Binary Heaps
 
 The folder [03_Binary_heaps](03_Binary_heaps) contains a simple array-implementation of binary heaps in the C-programming language.
 
 
 
-## 04 Binary heaps
+## 04 Binary Heaps No Swap
 
 The folder [04_Binary_heaps_noswap](04_Binary_heaps_noswap) contains a simple array-implementation of binary heaps in the C-programming language that doesn't swaps the elements of the array, so to be more efficient, but uses two arrays to keep track of the position of the nodes in the heap and in the array.
 
