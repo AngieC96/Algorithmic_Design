@@ -2,9 +2,7 @@
 
 ### A simple binary heap library (and testing tools)
 
-This folder contains a template for a simple array-implementation of binary heaps in the C-programming language.
-
-This template contains all the code needed to test your implementation of binary heaps in both correctness and efficiency terms. Your are exclusively required to code the type `binheap_type` in the file [binheap.h](include/binheap.h) and all the functions dealing it in the file [binheap.c](src/binheap.c). The meaning of the function parameters and the semantics of the functions themselves are detailed in [binheap.h](include/binheap.h). Once this has been done, a set of tests can be produced as described below.
+This folder contains a template for a simple array-implementation of binary heaps in the C-programming language that doesn't swaps the elements of the array, so to be more efficient, but uses two arrays to keep track of the position of the nodes in the heap and in the array.
 
 You can generate the Makefile by using [cmake](https://cmake.org/) as follows:
 
